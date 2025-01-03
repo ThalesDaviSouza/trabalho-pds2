@@ -1,4 +1,4 @@
-#include "jogadorInGame.hpp"
+#include "./../include/jogadorInGame.hpp"
 
 Jogador JogadorInGame::getJogador(){
   return this->jogador;

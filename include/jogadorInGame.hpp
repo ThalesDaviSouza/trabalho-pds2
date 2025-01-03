@@ -1,7 +1,7 @@
 #ifndef JOGADORINGAME_H
 #define JOGADORINGAME_H
 
-#include "./../jogador/jogador.hpp"
+#include "./jogador.hpp"
 #include "./../Enums/cor.cpp"
 
 class JogadorInGame{

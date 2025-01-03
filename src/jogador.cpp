@@ -1,4 +1,4 @@
-#include "jogador.hpp"
+#include "./../include/jogador.hpp"
 
 string Jogador::getApelido(){
   return this->Apelido;

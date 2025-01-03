@@ -1,7 +1,6 @@
 #ifndef JOGADOR_H
 #define JOGADOR_H
 
-#include "jogador.cpp"
 #include <string>
 
 using namespace std;
