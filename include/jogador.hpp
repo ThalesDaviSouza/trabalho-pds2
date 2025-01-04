@@ -11,6 +11,7 @@ private:
   string Apelido;
 
 public:
+  Jogador(string nome, string apelido);
   string getNome();
   string getApelido();
 
