@@ -1,3 +1,6 @@
+#ifndef MENU_OPTIONS_H
+#define MENU_OPTIONS_H
+
 enum MenuOptions {
   nenhuma = 0,
   voltar = -2,
@@ -13,3 +16,5 @@ enum MenuOptions {
   exibirJogadores = 202,
 
 };
+
+#endif

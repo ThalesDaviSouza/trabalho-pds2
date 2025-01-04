@@ -28,7 +28,23 @@ GerenciadorDeJogadores::GerenciadorDeJogadores(
     }
   }
   else{
-    // TODO: inserir lógica de ler o arquivo asism que eu fizer escrever no arquivo
+    
+    ifstream aux(caminhoArquivo, ios::ate | ios::binary);
+
+    // Verificando se o arquivo tem conteudo para ser lido
+    if(aux.tellg() != 0){
+      while(!arquivo.eof()){
+        string nome;
+        string apelido;
+        
+        getline(arquivo, nome);
+        getline(arquivo, apelido);
+
+        this->adicionarJogador(nome, apelido);
+
+      }
+    }
+
   }
 
   this->caminhoArquivo = caminhoArquivo;
@@ -65,4 +81,25 @@ void GerenciadorDeJogadores::exibirJogadores(){
   for(Jogador& jogador : this->jogadores){
     cout << jogador.getNome() << " - [" << jogador.getApelido() << "]" << endl;
   }
+}
+
+bool GerenciadorDeJogadores::salvarJogadores(){
+  ofstream arquivo(caminhoArquivo, ios::trunc);
+
+  if(!this->jogadores.empty())
+  {
+    string apelidoUltimoJogador = this->jogadores.back().getApelido();
+
+    for(Jogador& jogador : this->jogadores){
+      arquivo << jogador.getNome() << endl;
+      arquivo << jogador.getApelido();
+
+      if(apelidoUltimoJogador.compare(jogador.getApelido()) != 0){
+        arquivo << endl;
+      }
+    }
+  }
+  
+  arquivo.close();
+
 }

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class GerenciadorDeJogadores{
+class GerenciadorDeJogadores {
 private:
   string nomeArquivo;
   string caminhoPasta;
@@ -16,9 +16,11 @@ private:
 
 public:
   GerenciadorDeJogadores(string caminhoPasta, string nomeArquivo);
+  ~GerenciadorDeJogadores() = default;
   void exibirJogadores();
   bool adicionarJogador(string& nome, string& apelido);
   bool jogadorEhValido(string& apelido);
+  bool salvarJogadores();
 };
 
 #endif

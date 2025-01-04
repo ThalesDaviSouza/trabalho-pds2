@@ -1,63 +1,93 @@
 #include <iostream>
+#include <stack>
 
 #include "./../include/gerenciadorDeJogadores.hpp"
+#include "./../include/menus/menu.hpp"
 #include "./../Enums/MenuOptions.cpp"
 
 using namespace std;
 
-GerenciadorDeJogadores gerenciadorDeJogadores("data", "dados.txt");
+GerenciadorDeJogadores gerenciadorDeJogadores = GerenciadorDeJogadores("data", "dados.txt");
 
-void menuJogadores(){
-  int escolha = nenhuma;
+void addJogador(){
   string nome, apelido;
 
-  while(escolha != voltar){
-    cout << "Escolha uma das opcoes abaixo:" << endl;
-    cout << "[" << adicionarJogador << "] - Adicionar Jogador" << endl;
-    cout << "[" << exibirJogadores << "] - Exibir Jogador" << endl;
-    cout << "[" << voltar << "] - Voltar ao menu anterior" << endl;
-    
-    cin >> escolha;
+  cin.clear();
+  fflush(stdin);
 
-    if(escolha == adicionarJogador){
-      cin.clear();
-      fflush(stdin);
+  cout << "Insira o nome do jogador: ";
+  getline(cin, nome);
+  
+  cout << "Insira o apelido do jogador: ";
+  getline(cin, apelido);
 
-      cout << "Insira o nome do jogador: ";
-      getline(cin, nome);
-     
-      cout << "Insira o apelido do jogador: ";
-      getline(cin, apelido);
-
-      if(gerenciadorDeJogadores.adicionarJogador(nome, apelido)){
-        cout << "Jogador adicionado com sucesso" << endl;
-      }
-      else{
-        cout << "Falha ao adicionar o jogador" << endl;
-        cout << "Verifique se o Apelido ja nao esta em uso" << endl;
-      }
-    }
-    else if(escolha == exibirJogadores){
-      gerenciadorDeJogadores.exibirJogadores();
-    }
+  if(gerenciadorDeJogadores.adicionarJogador(nome, apelido)){
+    cout << "Jogador adicionado com sucesso" << endl;
+  }
+  else{
+    cout << "Falha ao adicionar o jogador" << endl;
+    cout << "Verifique se o Apelido ja nao esta em uso" << endl;
   }
 }
 
 int main(){
   int escolha = nenhuma;
+  stack<Menu*> menus;
 
-  while(escolha != fecharPrograma){
-    cout << "O que voce deseja fazer?" << endl;
-    cout << "[" << gerenciarJogadores << "] - Gerenciar Jogadores" << endl;  
-    cout << "[" << fecharPrograma << "] - Fechar Programa" << endl;
+  try{
+    menus.push(new Menu(true));
+  }
+  catch(exception& ex){
+    cout << ex.what();
+  }
+  
+  while(true)
+  {
+    menus.top()->imprimirMenu();
+    cout << "Opcao: ";
+    cin >> escolha;
 
-    cin >> escolha;  
+    try
+    {
+      if(menus.top()->validarAcao(escolha))
+      {
+        if(menus.top()->acaoEncerraPrograma(escolha)){
+          break;
+        }
+        if(menus.top()->acaoAbreMenu(escolha)){
+          Menu* menuAtual = menus.top()->abrirMenuNovo(escolha); 
+          menus.push(menuAtual);
+        }
+        else if(menus.top()->acaoFechaMenu(escolha)){
+          Menu* menuParaDeletar = menus.top();
+          menus.pop();
 
-    if(escolha == gerenciarJogadores){
-      menuJogadores();
+          delete menuParaDeletar;
+        }
+        else{
+          if(escolha == adicionarJogador){
+            addJogador();
+          }
+          else if(escolha == exibirJogadores){
+            gerenciadorDeJogadores.exibirJogadores();
+          }
+        }
+      }
     }
+    catch(const invalid_argument& e)
+    {
+      cerr << "Houve um erro: " << e.what() << '\n';
+    }
+    catch(const exception& e)
+    {
+      cerr << "Houve um erro: " << e.what() << '\n';
+    }
+
   }
 
+  delete menus.top();
+
+  gerenciadorDeJogadores.salvarJogadores();
 
   return 0;
 }
