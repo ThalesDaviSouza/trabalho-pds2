@@ -1,31 +1,66 @@
 BUILD_DIR = ./build
-CPPFLAGS = -I include
+BUILD_DIR_TESTS = ./build/tests
 
-all: compilerProject 
+BUILD = build
+BUILD_MENU = build\menus
+BUILD_TESTS = build\tests
+BUILD_TESTS_MENUS = build\tests\menus
 
-compilerProject: $(BUILD_DIR)/main.o $(BUILD_DIR)/jogador.o $(BUILD_DIR)/jogadorInGame.o $(BUILD_DIR)/gerenciadorDeJogadores.o $(BUILD_DIR)/menu.o $(BUILD_DIR)/menuItem.o $(BUILD_DIR)/menuGerenciarJogadores.o
-	g++ -o output $(BUILD_DIR)/main.o $(BUILD_DIR)/jogador.o $(BUILD_DIR)/jogadorInGame.o $(BUILD_DIR)/gerenciadorDeJogadores.o $(BUILD_DIR)/menu.o $(BUILD_DIR)/menuItem.o $(BUILD_DIR)/menuGerenciarJogadores.o
+SRC_DIR = ./src
+TESTS_DIR = ./tests
+INCLUDE_DIR = ./include
 
-$(BUILD_DIR)/main.o: ./src/main.cpp ./include/jogador.hpp | build
-	g++ $(CPPFLAGS) -c ./src/main.cpp -o $(BUILD_DIR)/main.o
+CXX = g++ -std=gnu++11
+CPPFLAGS = -I$(INCLUDE_DIR)
+CXXFLAGS = -c
 
-$(BUILD_DIR)/jogador.o: ./src/jogador.cpp ./include/jogador.hpp | build
-	g++ $(CPPFLAGS) -c ./src/jogador.cpp -o $(BUILD_DIR)/jogador.o 
+SOURCES = $(wildcard $(SRC_DIR)/**/*.cpp $(SRC_DIR)/*.cpp)
+OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
 
-$(BUILD_DIR)/jogadorInGame.o: ./src/jogadorInGame.cpp ./include/jogadorInGame.hpp | build
-	g++ $(CPPFLAGS) -c ./src/jogadorInGame.cpp -o $(BUILD_DIR)/jogadorInGame.o 
+SOURCES_NO_MAIN = $(filter-out $(SRC_DIR)/main.cpp, $(wildcard $(SRC_DIR)/**/*.cpp $(SRC_DIR)/*.cpp))
+OBJECTS_NO_MAIN = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SOURCES_NO_MAIN))
+SOURCES_TESTS = $(wildcard $(TESTS_DIR)/**/*.cpp $(TESTS_DIR)/*.cpp)
+OBJECTS_TESTS = $(patsubst $(TESTS_DIR)/%.cpp, $(BUILD_DIR_TESTS)/%.o, $(SOURCES_TESTS))
 
-$(BUILD_DIR)/gerenciadorDeJogadores.o: ./src/gerenciadorDeJogadores.cpp ./include/gerenciadorDeJogadores.hpp | build
-	g++ $(CPPFLAGS) -c ./src/gerenciadorDeJogadores.cpp -o $(BUILD_DIR)/gerenciadorDeJogadores.o 
+TARGET = output
+TARGET_TEST = output_test
 
-$(BUILD_DIR)/menu.o: ./src/menus/menu.cpp ./include/menus/menu.hpp | build
-	g++ $(CPPFLAGS) -c ./src/menus/menu.cpp -o $(BUILD_DIR)/menu.o 
+# Compila o programa normal
+all: $(TARGET)
 
-$(BUILD_DIR)/menuItem.o: ./src/menus/menuItem.cpp ./include/menus/menuItem.hpp | build
-	g++ $(CPPFLAGS) -c ./src/menus/menuItem.cpp -o $(BUILD_DIR)/menuItem.o 
+$(TARGET): $(OBJECTS)
+	$(CXX) -o $@ $^
 
-$(BUILD_DIR)/menuGerenciarJogadores.o: ./src/menus/menuGerenciarJogadores.cpp ./include/menus/menuGerenciarJogadores.hpp | build
-	g++ $(CPPFLAGS) -c ./src/menus/menuGerenciarJogadores.cpp -o $(BUILD_DIR)/menuGerenciarJogadores.o 
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | preparar_build
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
-build:
-	mkdir build
+preparar_build: $(BUILD) $(BUILD_MENU)
+
+$(BUILD): 
+	mkdir $(BUILD)
+
+$(BUILD_MENU):
+	mkdir $(BUILD_MENU)
+
+
+# Compila os testes
+tests: $(TARGET_TEST)
+	$(TARGET_TEST)
+
+$(TARGET_TEST): $(OBJECTS_TESTS) $(OBJECTS_NO_MAIN) | clean
+	$(CXX) -o $@ $^
+
+$(BUILD_DIR_TESTS)/%.o: $(TESTS_DIR)/%.cpp | preparar_build_tests
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< -o $@
+
+preparar_build_tests: $(BUILD_TESTS) $(BUILD_TESTS_MENUS)
+
+$(BUILD_TESTS):
+	mkdir $(BUILD_TESTS)
+
+$(BUILD_TESTS_MENUS):
+	mkdir $(BUILD_TESTS_MENUS)
+
+
+clean:
+	del *.o *.exe
