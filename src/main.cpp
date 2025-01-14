@@ -30,6 +30,23 @@ void addJogador(){
   }
 }
 
+void removeJogador(){
+  string apelido;
+
+  cin.clear();
+  fflush(stdin);
+
+  cout << "Insira o apelido do jogador: " << endl;
+  getline(cin, apelido);
+
+  if(gerenciadorDeJogadores.removerJogador(apelido)){
+    cout << "Jogador removido" << endl;
+  }
+  else{
+    cout << "Jogador não foi encontrado" << endl;
+  }
+}
+
 int main(){
   int escolha = nenhuma;
   stack<Menu*> menus;
@@ -68,6 +85,9 @@ int main(){
           if(escolha == adicionarJogador){
             addJogador();
           }
+          else if(escolha == removerJogador){
+            removeJogador();
+          }
           else if(escolha == exibirJogadores){
             gerenciadorDeJogadores.exibirJogadores();
           }
@@ -85,7 +105,12 @@ int main(){
 
   }
 
-  delete menus.top();
+  while(!menus.empty()){
+    Menu* aux = menus.top();
+    menus.pop();
+
+    delete aux;
+  }
 
   gerenciadorDeJogadores.salvarJogadores();
 

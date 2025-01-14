@@ -72,6 +72,20 @@ bool GerenciadorDeJogadores::adicionarJogador(string& nome, string& apelido){
   }
 }
 
+bool GerenciadorDeJogadores::removerJogador(string& apelido){
+  int i = 0;
+
+  for(Jogador& jogador : this->jogadores){
+    if(jogador.getApelido().compare(apelido) == 0){
+      this->jogadores.erase(this->jogadores.begin() + i);
+      return true;
+    }
+    i++;
+  }
+
+  return false;
+}
+
 void GerenciadorDeJogadores::exibirJogadores(){
   if(this->jogadores.empty()){
     cout << "Nenhum jogador adicionado ainda" << endl;

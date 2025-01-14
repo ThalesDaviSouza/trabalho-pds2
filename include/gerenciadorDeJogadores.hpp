@@ -19,6 +19,7 @@ public:
   ~GerenciadorDeJogadores() = default;
   void exibirJogadores();
   bool adicionarJogador(string& nome, string& apelido);
+  bool removerJogador(string& apelido);
   bool jogadorEhValido(string& apelido);
   bool salvarJogadores();
 };
