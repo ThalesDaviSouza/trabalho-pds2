@@ -4,6 +4,7 @@
 #include "./../include/gerenciadorDeJogadores.hpp"
 #include "./../include/menus/menu.hpp"
 #include "./../Enums/MenuOptions.cpp"
+#include "./../shared/Utils.cpp"
 
 using namespace std;
 
@@ -12,8 +13,7 @@ GerenciadorDeJogadores gerenciadorDeJogadores = GerenciadorDeJogadores("data", "
 void addJogador(){
   string nome, apelido;
 
-  cin.clear();
-  fflush(stdin);
+  clearBuffer();
 
   cout << "Insira o nome do jogador: ";
   getline(cin, nome);
@@ -33,8 +33,7 @@ void addJogador(){
 void removeJogador(){
   string apelido;
 
-  cin.clear();
-  fflush(stdin);
+  clearBuffer();
 
   cout << "Insira o apelido do jogador: " << endl;
   getline(cin, apelido);
@@ -50,6 +49,7 @@ void removeJogador(){
 int main(){
   int escolha = nenhuma;
   stack<Menu*> menus;
+  string lixo;
 
   try{
     menus.push(new Menu(true));
@@ -60,12 +60,16 @@ int main(){
   
   while(true)
   {
-    menus.top()->imprimirMenu();
-    cout << "Opcao: ";
-    cin >> escolha;
-
     try
     {
+      menus.top()->imprimirMenu();
+      cout << "Opcao: ";
+      if(!(cin >> escolha)){
+        clearBuffer();
+
+        throw invalid_argument("Entrada invalida");
+      }
+
       if(menus.top()->validarAcao(escolha))
       {
         if(menus.top()->acaoEncerraPrograma(escolha)){
