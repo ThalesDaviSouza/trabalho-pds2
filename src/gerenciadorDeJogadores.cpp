@@ -3,7 +3,12 @@
 
 #include <iostream>
 #include <fstream>
+#ifdef _WIN32
 #include <direct.h>
+#else
+#include <sys/stat.h>
+#include <unistd.h>
+#endif
 
 using namespace std;
 
@@ -17,9 +22,13 @@ GerenciadorDeJogadores::GerenciadorDeJogadores(
   ifstream arquivo(caminhoArquivo);
 
   if(!arquivo.is_open()){
+    #ifdef _WIN32
     // Cria a pasta caso ela não exista
     _mkdir(caminhoPasta.c_str());
-
+    #else 
+    mkdir(caminhoPasta.c_str(),0755);
+    #endif
+    
     ofstream arquivoCriado(caminhoArquivo);
 
     if(!arquivoCriado.is_open()){

@@ -2,7 +2,7 @@
 #define JOGADORINGAME_H
 
 #include "./jogador.hpp"
-#include "./../Enums/cor.cpp"
+#include "./../Enums/Cor.cpp"
 
 class JogadorInGame{
 private:

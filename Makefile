@@ -2,7 +2,7 @@ BUILD_DIR = ./build
 BUILD_DIR_TESTS = ./build/tests
 
 BUILD = build
-BUILD_MENU = build\menus
+BUILD_MENU = build/menus
 BUILD_TESTS = build\tests
 BUILD_TESTS_MENUS = build\tests\menus
 
