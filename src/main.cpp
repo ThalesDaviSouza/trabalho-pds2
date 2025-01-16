@@ -4,6 +4,7 @@
 #include "./../include/gerenciadorDeJogadores.hpp"
 #include "./../include/menus/menu.hpp"
 #include "./../Enums/MenuOptions.cpp"
+#include "./../shared/Utils.cpp"
 
 using namespace std;
 
@@ -12,8 +13,7 @@ GerenciadorDeJogadores gerenciadorDeJogadores = GerenciadorDeJogadores("data", "
 void addJogador(){
   string nome, apelido;
 
-  cin.clear();
-  fflush(stdin);
+  clearBuffer();
 
   cout << "Insira o nome do jogador: ";
   getline(cin, nome);
@@ -30,9 +30,26 @@ void addJogador(){
   }
 }
 
+void removeJogador(){
+  string apelido;
+
+  clearBuffer();
+
+  cout << "Insira o apelido do jogador: " << endl;
+  getline(cin, apelido);
+
+  if(gerenciadorDeJogadores.removerJogador(apelido)){
+    cout << "Jogador removido" << endl;
+  }
+  else{
+    cout << "Jogador não foi encontrado" << endl;
+  }
+}
+
 int main(){
   int escolha = nenhuma;
   stack<Menu*> menus;
+  string lixo;
 
   try{
     menus.push(new Menu(true));
@@ -43,12 +60,16 @@ int main(){
   
   while(true)
   {
-    menus.top()->imprimirMenu();
-    cout << "Opcao: ";
-    cin >> escolha;
-
     try
     {
+      menus.top()->imprimirMenu();
+      cout << "Opcao: ";
+      if(!(cin >> escolha)){
+        clearBuffer();
+
+        throw invalid_argument("Entrada invalida");
+      }
+
       if(menus.top()->validarAcao(escolha))
       {
         if(menus.top()->acaoEncerraPrograma(escolha)){
@@ -68,6 +89,9 @@ int main(){
           if(escolha == adicionarJogador){
             addJogador();
           }
+          else if(escolha == removerJogador){
+            removeJogador();
+          }
           else if(escolha == exibirJogadores){
             gerenciadorDeJogadores.exibirJogadores();
           }
@@ -85,7 +109,12 @@ int main(){
 
   }
 
-  delete menus.top();
+  while(!menus.empty()){
+    Menu* aux = menus.top();
+    menus.pop();
+
+    delete aux;
+  }
 
   gerenciadorDeJogadores.salvarJogadores();
 
