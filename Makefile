@@ -1,16 +1,25 @@
+ifeq ($(OS),Windows_NT)
+    SLASH = \\
+		RM = del
+else
+    SLASH = /
+		RM = rm -f
+endif
+
 BUILD_DIR = ./build
 BUILD_DIR_TESTS = ./build/tests
 
 BUILD = build
-BUILD_MENU = build/menus
-BUILD_TESTS = build\tests
-BUILD_TESTS_MENUS = build\tests\menus
+BUILD_MENU = build$(SLASH)menus
+BUILD_TESTS = build$(SLASH)tests
+BUILD_TESTS_MENUS = build$(SLASH)tests$(SLASH)menus
 
 SRC_DIR = ./src
 TESTS_DIR = ./tests
 INCLUDE_DIR = ./include
 
 CXX = g++ -std=gnu++11
+CXX_COVERAGE = g++ -std=gnu++11 -fprofile-arcs -ftest-coverage -g
 CPPFLAGS = -I$(INCLUDE_DIR)
 CXXFLAGS = -c
 
@@ -23,6 +32,7 @@ SOURCES_TESTS = $(wildcard $(TESTS_DIR)/**/*.cpp $(TESTS_DIR)/*.cpp)
 OBJECTS_TESTS = $(patsubst $(TESTS_DIR)/%.cpp, $(BUILD_DIR_TESTS)/%.o, $(SOURCES_TESTS))
 
 TARGET = output
+TARGET_COVERAGE = output_coverage
 TARGET_TEST = output_test
 
 # Compila o programa normal
@@ -61,6 +71,22 @@ $(BUILD_TESTS):
 $(BUILD_TESTS_MENUS):
 	mkdir $(BUILD_TESTS_MENUS)
 
+# Gera o relatório
+report: aviso_report $(TARGET_COVERAGE) | clean 
+	$(TARGET_COVERAGE)
+	gcovr -r . --html --html-details -o report.html --exclude 'tests/.*'
+	@echo Report gerado com sucesso!
+	@echo Para conferir ele, abra o arquivo report.html
+
+aviso_report:
+	@echo Preparando para gerar o report...
+	@echo Caso nao possua o gcovr tente o comando no README
+
+$(TARGET_COVERAGE): $(SOURCES_TESTS) $(SOURCES_NO_MAIN) | clean
+	$(CXX_COVERAGE) $(CPPFLAGS) -o $@ $^
+
 
 clean:
-	del *.o *.exe
+	$(RM) *.o *.exe *.gcno *.gcda *.css *.html
+	
+	
