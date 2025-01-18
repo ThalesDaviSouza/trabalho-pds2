@@ -12,6 +12,9 @@
 #define LINHAS_VELHA 3
 #define QTD_VITORIA_VELHA 3
 
+#define COLUNAS_REVERSI 8
+#define LINHAS_REVERSI 8
+
 using namespace std;
 
 class Tabuleiro{
@@ -66,11 +69,17 @@ class Tabuleiro_JogoDaVelha : public Tabuleiro{
 };
 
 class Tabuleiro_Reversi : public Tabuleiro{ 
-     public:
-     Tabuleiro_Reversi(int linhas_, int colunas_);
+    private:
+     bool formaLinhaVertical(int linha, int coluna, Cor cor);
+     bool formaLinhaHorizontal(int linha, int coluna, Cor cor);
+     bool formaLinhaDiagonal(int linha, int coluna, Cor cor);
+
+    public:
+     Tabuleiro_Reversi();
      bool verificarJogada(int linha, int coluna, Cor cor) override;
      void fazerJogada(int linha, int coluna, Cor cor) override;
      bool verificarVitoria() override;
+     pair<Cor, int> retornarGanhador();
 };
 
 #endif
