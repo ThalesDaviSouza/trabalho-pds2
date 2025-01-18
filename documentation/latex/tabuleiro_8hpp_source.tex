@@ -1,0 +1,52 @@
+\doxysection{tabuleiro.\+hpp}
+\hypertarget{tabuleiro_8hpp_source}{}\label{tabuleiro_8hpp_source}\index{include/tabuleiro.hpp@{include/tabuleiro.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TABULEIRO\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TABULEIRO\_HPP}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}./../Enums/Cor.cpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }Tabuleiro\{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{protected}:\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ colunas;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ linhas;}
+\DoxyCodeLine{00013\ \ \ \ \ vector<vector<int>>\ tabuleiro\_;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ Tabuleiro(\textcolor{keywordtype}{int}\ colunas\_,\ \textcolor{keywordtype}{int}\ linhas\_);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ printTabuleiro();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor);}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }Tabuleiro\_Lig4\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ Tabuleiro\_Lig4();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada\ (\textcolor{keywordtype}{int}\ y)\textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarVitoria(\textcolor{keywordtype}{int}\ tabuleiro\_[6][7]);}
+\DoxyCodeLine{00028\ \};\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }Tabuleiro\_JogoDaVelha\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ Tabuleiro\_JogoDaVelha(\textcolor{keywordtype}{int}\ linhas\_,\ \textcolor{keywordtype}{int}\ colunas\_);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarVitoria();}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }Tabuleiro\_Reversi\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \ Tabuleiro\_Reversi(\textcolor{keywordtype}{int}\ linhas\_,\ \textcolor{keywordtype}{int}\ colunas\_);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarVitoria();}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

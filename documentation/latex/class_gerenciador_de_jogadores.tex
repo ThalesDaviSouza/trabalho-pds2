@@ -1,0 +1,95 @@
+\doxysection{Gerenciador\+De\+Jogadores Class Reference}
+\hypertarget{class_gerenciador_de_jogadores}{}\label{class_gerenciador_de_jogadores}\index{GerenciadorDeJogadores@{GerenciadorDeJogadores}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b}{Gerenciador\+De\+Jogadores}} (string caminho\+Pasta, string nome\+Arquivo)
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe. \end{DoxyCompactList}\item 
+\Hypertarget{class_gerenciador_de_jogadores_a2c0a4e893fbd64f2291901aaf84a0c89}\label{class_gerenciador_de_jogadores_a2c0a4e893fbd64f2291901aaf84a0c89} 
+void {\bfseries exibir\+Jogadores} ()
+\begin{DoxyCompactList}\small\item\em Exibe todos os Jogadores cadastrados. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gerenciador_de_jogadores_af32d5f63a6417c336f94e6bdee2b55c4}{adicionar\+Jogador}} (string \&nome, string \&apelido)
+\begin{DoxyCompactList}\small\item\em Adiciona jogadores. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gerenciador_de_jogadores_abb16a324c99b9b5e67fdd5195b472983}{remover\+Jogador}} (string \&apelido)
+\begin{DoxyCompactList}\small\item\em Remove 1 \doxylink{class_jogador}{Jogador} da lista de jogadores. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gerenciador_de_jogadores_add4292c8b1a8030b038e894aed2b8384}{jogador\+Eh\+Valido}} (string \&apelido)
+\begin{DoxyCompactList}\small\item\em Verifica se um apelido de \doxylink{class_jogador}{Jogador} é válido. \end{DoxyCompactList}\item 
+\Hypertarget{class_gerenciador_de_jogadores_a470f3233c7ecbf90206bd8061f60c18f}\label{class_gerenciador_de_jogadores_a470f3233c7ecbf90206bd8061f60c18f} 
+bool {\bfseries salvar\+Jogadores} ()
+\begin{DoxyCompactList}\small\item\em Salva todos os Jogadores carregados na lista no arquivo de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b}\index{GerenciadorDeJogadores@{GerenciadorDeJogadores}!GerenciadorDeJogadores@{GerenciadorDeJogadores}}
+\index{GerenciadorDeJogadores@{GerenciadorDeJogadores}!GerenciadorDeJogadores@{GerenciadorDeJogadores}}
+\doxysubsubsection{\texorpdfstring{GerenciadorDeJogadores()}{GerenciadorDeJogadores()}}
+{\footnotesize\ttfamily \label{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b} 
+Gerenciador\+De\+Jogadores\+::\+Gerenciador\+De\+Jogadores (\begin{DoxyParamCaption}\item[{string}]{caminho\+Pasta}{, }\item[{string}]{nome\+Arquivo}{}\end{DoxyParamCaption})}
+
+
+
+Construtor padrão da classe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+Pasta} & Caminho relativo onde ficam os dados. \\
+\hline
+{\em nome\+Arquivo} & Nome do arquivo onde ficam os dados.\\
+\hline
+\end{DoxyParams}
+Tenta abrir o arquivo de dados na pasta especificada. Caso não exista, tenta criar a pasta e o arquivo. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_gerenciador_de_jogadores_af32d5f63a6417c336f94e6bdee2b55c4}\index{GerenciadorDeJogadores@{GerenciadorDeJogadores}!adicionarJogador@{adicionarJogador}}
+\index{adicionarJogador@{adicionarJogador}!GerenciadorDeJogadores@{GerenciadorDeJogadores}}
+\doxysubsubsection{\texorpdfstring{adicionarJogador()}{adicionarJogador()}}
+{\footnotesize\ttfamily \label{class_gerenciador_de_jogadores_af32d5f63a6417c336f94e6bdee2b55c4} 
+bool Gerenciador\+De\+Jogadores\+::adicionar\+Jogador (\begin{DoxyParamCaption}\item[{string \&}]{nome}{, }\item[{string \&}]{apelido}{}\end{DoxyParamCaption})}
+
+
+
+Adiciona jogadores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & Nome do \doxylink{class_jogador}{Jogador} \\
+\hline
+{\em apelido} & Apelido do \doxylink{class_jogador}{Jogador} (deve ser único) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gerenciador_de_jogadores_add4292c8b1a8030b038e894aed2b8384}\index{GerenciadorDeJogadores@{GerenciadorDeJogadores}!jogadorEhValido@{jogadorEhValido}}
+\index{jogadorEhValido@{jogadorEhValido}!GerenciadorDeJogadores@{GerenciadorDeJogadores}}
+\doxysubsubsection{\texorpdfstring{jogadorEhValido()}{jogadorEhValido()}}
+{\footnotesize\ttfamily \label{class_gerenciador_de_jogadores_add4292c8b1a8030b038e894aed2b8384} 
+bool Gerenciador\+De\+Jogadores\+::jogador\+Eh\+Valido (\begin{DoxyParamCaption}\item[{string \&}]{apelido}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se um apelido de \doxylink{class_jogador}{Jogador} é válido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em apelido} & Apelido do \doxylink{class_jogador}{Jogador}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gerenciador_de_jogadores_abb16a324c99b9b5e67fdd5195b472983}\index{GerenciadorDeJogadores@{GerenciadorDeJogadores}!removerJogador@{removerJogador}}
+\index{removerJogador@{removerJogador}!GerenciadorDeJogadores@{GerenciadorDeJogadores}}
+\doxysubsubsection{\texorpdfstring{removerJogador()}{removerJogador()}}
+{\footnotesize\ttfamily \label{class_gerenciador_de_jogadores_abb16a324c99b9b5e67fdd5195b472983} 
+bool Gerenciador\+De\+Jogadores\+::remover\+Jogador (\begin{DoxyParamCaption}\item[{string \&}]{apelido}{}\end{DoxyParamCaption})}
+
+
+
+Remove 1 \doxylink{class_jogador}{Jogador} da lista de jogadores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em apelido} & Apelido do \doxylink{class_jogador}{Jogador} que deve ser removido. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/gerenciador\+De\+Jogadores.\+hpp\item 
+src/gerenciador\+De\+Jogadores.\+cpp\end{DoxyCompactItemize}

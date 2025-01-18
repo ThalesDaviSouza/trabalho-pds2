@@ -5,6 +5,11 @@
 
 class MenuGerenciarJogadores : public Menu {
 public:
+  /**
+   * @brief Construtor padrão da classe.
+   * 
+   * @details Define os itens de menu (MenuItem) que esse menu possui.
+   */
   MenuGerenciarJogadores();
 
 };

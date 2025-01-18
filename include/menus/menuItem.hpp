@@ -15,6 +15,13 @@ private:
   bool fechaMenu;
 
 public:
+  /**
+   * @brief Construtor padrão.
+   * 
+   * @param valor Valor que identificará o item do menu (MenuItem).
+   * @param texto Texto do item do menu (MenuItem).
+   * @param abreMenu Informa se abre um menu novo ou não.
+   */
   MenuItem(int valor, string texto, bool abreMenu)
    : valor(valor), 
      texto(texto), 
@@ -22,9 +29,24 @@ public:
      fechaMenu(valor == voltar) 
   { }
 
+  /**
+   * @brief Imprime as informações do item do menu (MenuItem).
+   */
   void imprimirLinha();
+
+  /**
+   * @brief Retorna o valor do item do menu (MenuItem).
+   */
   int getValor();
+
+  /**
+   * @brief Retorna se o item do menu (MenuItem) abre um novo Menu.
+   */
   bool getAbreMenu();
+
+  /**
+   * @brief Retorna se o item do menu (MenuItem) fecha o Menu atual.
+   */
   bool getFechaMenu();
 
 };

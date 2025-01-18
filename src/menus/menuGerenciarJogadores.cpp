@@ -4,7 +4,13 @@
 #include "./../../include/menus/menuItem.hpp"
 #include "./../../Enums/MenuOptions.cpp"
 
-
+/**
+ * @details Itens do Menu:
+ * @details Adicionar Jogador.
+ * @details Remover Jogador.
+ * @details Exibir Jogador.
+ * @details Voltar ao menu anterior.
+ */
 MenuGerenciarJogadores::MenuGerenciarJogadores()
 : Menu(false) 
 {
