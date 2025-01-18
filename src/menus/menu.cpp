@@ -40,6 +40,7 @@ bool Menu::validarAcao(int escolha){
     }
   }
 
+  return false;
 }
 
 bool Menu::acaoAbreMenu(int escolha){

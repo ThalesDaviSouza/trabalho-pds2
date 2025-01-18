@@ -94,6 +94,20 @@ aviso_report:
 $(TARGET_COVERAGE): $(SOURCES_TESTS) $(SOURCES_NO_MAIN) | clean
 	$(CXX_COVERAGE) $(CPPFLAGS) -o $@ $^
 
+# Gera o relatório
+report: aviso_report $(TARGET_COVERAGE) | clean 
+	$(TARGET_COVERAGE)
+	gcovr -r . --html --html-details -o report.html --exclude 'tests/.*'
+	@echo Report gerado com sucesso!
+	@echo Para conferir ele, abra o arquivo report.html
+
+aviso_report:
+	@echo Preparando para gerar o report...
+	@echo Caso nao possua o gcovr tente o comando no README
+
+$(TARGET_COVERAGE): $(SOURCES_TESTS) $(SOURCES_NO_MAIN) | clean
+	$(CXX_COVERAGE) $(CPPFLAGS) -o $@ $^
+
 
 clean:
 	$(RM) *.o *.exe *.gcno *.gcda *.css *.html

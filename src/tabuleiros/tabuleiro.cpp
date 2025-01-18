@@ -9,12 +9,14 @@ Tabuleiro::Tabuleiro(int colunas_, int linhas_)
     this->linhas = linhas_;
 
     tabuleiro_ = vector<vector<Cor>>(linhas, vector<Cor>(colunas, Vazio));
+
 }
 
 void Tabuleiro::printTabuleiro()
 {
     for (int i = 0; i < this->linhas; i++)
     {
+
         cout << "| ";
         for (int j = 0; j < this->colunas; j++)
         {

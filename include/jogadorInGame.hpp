@@ -10,6 +10,7 @@ private:
   Cor cor;
 
 public:
+  JogadorInGame(Jogador& jogador, Cor cor) : jogador(jogador), cor(cor) {};
   Jogador getJogador();
   Cor getCor();
 };

@@ -134,3 +134,36 @@ TEST_SUITE("Gerenciador de Jogadores: Validar remocao de jogadores"){
     CHECK_FALSE(retorno);
   }
 }
+
+TEST_SUITE("Gerenciador de Jogadores: Validar salvar jogadores"){
+  TEST_CASE("Dado 1 jogador salvar ele no arquivo"){
+    GerenciadorDeJogadores * gerenciador = new GerenciadorDeJogadores("data", "dados_test.txt");
+    
+    string nome1 = "TESTE PESSOA 1";
+    string apelido1 = "TESTE1";
+    
+    string nome2 = "TESTE PESSOA 2";
+    string apelido2 = "TESTE2";
+    
+    gerenciador->adicionarJogador(nome1, apelido1);
+    gerenciador->adicionarJogador(nome2, apelido2);
+
+    CHECK_FALSE(gerenciador->jogadorEhValido(apelido1));
+    CHECK_FALSE(gerenciador->jogadorEhValido(apelido2));
+    
+    gerenciador->salvarJogadores();
+
+    delete gerenciador;
+
+    gerenciador = new GerenciadorDeJogadores("data", "dados_test.txt");
+
+    CHECK_FALSE(gerenciador->jogadorEhValido(apelido1));
+    CHECK_FALSE(gerenciador->jogadorEhValido(apelido2));
+
+    gerenciador->removerJogador(apelido1);
+    gerenciador->removerJogador(apelido2);
+    gerenciador->salvarJogadores();
+    
+    delete gerenciador;
+  }
+}
