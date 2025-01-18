@@ -1,0 +1,39 @@
+\doxysection{menu.\+hpp}
+\hypertarget{menu_8hpp_source}{}\label{menu_8hpp_source}\index{include/menus/menu.hpp@{include/menus/menu.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MENU\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MENU\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}./menuItem.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}./../gerenciadorDeJogadores.hpp"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu_a67bd8fc6a18c1ffed32117bd130d1a46}{Menu}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00015\ \ \ vector<MenuItem>\ \mbox{\hyperlink{class_menu_afd46761492ee813d705d79a7e9e3e355}{itens}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{class_menu_a67bd8fc6a18c1ffed32117bd130d1a46}{Menu}}(\textcolor{keywordtype}{bool}\ ehMenuBase);}
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_menu_a67bd8fc6a18c1ffed32117bd130d1a46}{\string~Menu}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ \ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a978138e1da82a8243cb6abb278e2232d}{imprimirMenu}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a889c27b4635fcdcc74cd9c9469954432}{validarAcao}}(\textcolor{keywordtype}{int}\ escolha);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a133ff28662d9a89d2e52fe4ba926cc63}{acaoAbreMenu}}(\textcolor{keywordtype}{int}\ escolha);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_menu_a67bd8fc6a18c1ffed32117bd130d1a46}{Menu}}*\ \mbox{\hyperlink{class_menu_a9f598983c0aec978d2f56ff8a20d0707}{abrirMenuNovo}}(\textcolor{keywordtype}{int}\ escolha);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_ac5c22fb74412115be7eccad508e17a8b}{acaoFechaMenu}}(\textcolor{keywordtype}{int}\ escolha);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_aecd184a9f6228d971036b6eec117a32d}{acaoEncerraPrograma}}(\textcolor{keywordtype}{int}\ escolha);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

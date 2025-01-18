@@ -12,6 +12,9 @@
 
 using namespace std;
 
+/**
+ * @details Tenta abrir o arquivo de dados na pasta especificada. Caso não exista, tenta criar a pasta e o arquivo. 
+ */
 GerenciadorDeJogadores::GerenciadorDeJogadores(
   string caminhoPasta, 
   string nomeArquivo

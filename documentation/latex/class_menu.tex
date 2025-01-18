@@ -1,0 +1,134 @@
+\doxysection{Menu Class Reference}
+\hypertarget{class_menu}{}\label{class_menu}\index{Menu@{Menu}}
+Inheritance diagram for Menu\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_menu}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_a67bd8fc6a18c1ffed32117bd130d1a46}{Menu}} (bool eh\+Menu\+Base)
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe. \end{DoxyCompactList}\item 
+\Hypertarget{class_menu_a978138e1da82a8243cb6abb278e2232d}\label{class_menu_a978138e1da82a8243cb6abb278e2232d} 
+void {\bfseries imprimir\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Imprime os itens do \doxylink{class_menu}{Menu} (\doxylink{class_menu_item}{Menu\+Item}). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a889c27b4635fcdcc74cd9c9469954432}{validar\+Acao}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Valida a ação é um dos itens do \doxylink{class_menu}{Menu} (\doxylink{class_menu_item}{Menu\+Item}). \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_menu_a133ff28662d9a89d2e52fe4ba926cc63}{acao\+Abre\+Menu}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Indica se o item do menu (\doxylink{class_menu_item}{Menu\+Item}) abre um \doxylink{class_menu}{Menu} novo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_menu}{Menu}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_menu_a9f598983c0aec978d2f56ff8a20d0707}{abrir\+Menu\+Novo}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Cria um novo \doxylink{class_menu}{Menu} e retorna um ponteiro que aponta para o novo \doxylink{class_menu}{Menu}. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_menu_ac5c22fb74412115be7eccad508e17a8b}{acao\+Fecha\+Menu}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Valida se um item do menu (\doxylink{class_menu_item}{Menu\+Item}) fecha o menu atual. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_menu_aecd184a9f6228d971036b6eec117a32d}{acao\+Encerra\+Programa}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Valida se o item do menu (\doxylink{class_menu_item}{Menu\+Item}) encerra o programa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_menu_afd46761492ee813d705d79a7e9e3e355}\label{class_menu_afd46761492ee813d705d79a7e9e3e355} 
+vector$<$ \mbox{\hyperlink{class_menu_item}{Menu\+Item}} $>$ {\bfseries itens}
+\begin{DoxyCompactList}\small\item\em Lista de itens do menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_menu_a67bd8fc6a18c1ffed32117bd130d1a46}\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily \label{class_menu_a67bd8fc6a18c1ffed32117bd130d1a46} 
+Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{bool}]{eh\+Menu\+Base}{}\end{DoxyParamCaption})}
+
+
+
+Construtor padrão da classe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eh\+Menu\+Base} & Indica se é o menu base ou não. Importante para integração com as subclasses. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_menu_a9f598983c0aec978d2f56ff8a20d0707}\index{Menu@{Menu}!abrirMenuNovo@{abrirMenuNovo}}
+\index{abrirMenuNovo@{abrirMenuNovo}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{abrirMenuNovo()}{abrirMenuNovo()}}
+{\footnotesize\ttfamily \label{class_menu_a9f598983c0aec978d2f56ff8a20d0707} 
+\mbox{\hyperlink{class_menu}{Menu}} \texorpdfstring{$\ast$}{*} Menu\+::abrir\+Menu\+Novo (\begin{DoxyParamCaption}\item[{int}]{escolha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Cria um novo \doxylink{class_menu}{Menu} e retorna um ponteiro que aponta para o novo \doxylink{class_menu}{Menu}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escolha} & Valor do item do menu (\doxylink{class_menu_item}{Menu\+Item}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_a133ff28662d9a89d2e52fe4ba926cc63}\index{Menu@{Menu}!acaoAbreMenu@{acaoAbreMenu}}
+\index{acaoAbreMenu@{acaoAbreMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{acaoAbreMenu()}{acaoAbreMenu()}}
+{\footnotesize\ttfamily \label{class_menu_a133ff28662d9a89d2e52fe4ba926cc63} 
+bool Menu\+::acao\+Abre\+Menu (\begin{DoxyParamCaption}\item[{int}]{escolha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Indica se o item do menu (\doxylink{class_menu_item}{Menu\+Item}) abre um \doxylink{class_menu}{Menu} novo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escolha} & Valor do item do menu (\doxylink{class_menu_item}{Menu\+Item}) que deseja verificar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_aecd184a9f6228d971036b6eec117a32d}\index{Menu@{Menu}!acaoEncerraPrograma@{acaoEncerraPrograma}}
+\index{acaoEncerraPrograma@{acaoEncerraPrograma}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{acaoEncerraPrograma()}{acaoEncerraPrograma()}}
+{\footnotesize\ttfamily \label{class_menu_aecd184a9f6228d971036b6eec117a32d} 
+bool Menu\+::acao\+Encerra\+Programa (\begin{DoxyParamCaption}\item[{int}]{escolha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Valida se o item do menu (\doxylink{class_menu_item}{Menu\+Item}) encerra o programa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escolha} & Valor do item do menu (\doxylink{class_menu_item}{Menu\+Item}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_ac5c22fb74412115be7eccad508e17a8b}\index{Menu@{Menu}!acaoFechaMenu@{acaoFechaMenu}}
+\index{acaoFechaMenu@{acaoFechaMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{acaoFechaMenu()}{acaoFechaMenu()}}
+{\footnotesize\ttfamily \label{class_menu_ac5c22fb74412115be7eccad508e17a8b} 
+bool Menu\+::acao\+Fecha\+Menu (\begin{DoxyParamCaption}\item[{int}]{escolha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Valida se um item do menu (\doxylink{class_menu_item}{Menu\+Item}) fecha o menu atual. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escolha} & Valor do item do menu (\doxylink{class_menu_item}{Menu\+Item}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_a889c27b4635fcdcc74cd9c9469954432}\index{Menu@{Menu}!validarAcao@{validarAcao}}
+\index{validarAcao@{validarAcao}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{validarAcao()}{validarAcao()}}
+{\footnotesize\ttfamily \label{class_menu_a889c27b4635fcdcc74cd9c9469954432} 
+bool Menu\+::validar\+Acao (\begin{DoxyParamCaption}\item[{int}]{escolha}{}\end{DoxyParamCaption})}
+
+
+
+Valida a ação é um dos itens do \doxylink{class_menu}{Menu} (\doxylink{class_menu_item}{Menu\+Item}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escolha} & Ação que será verificada. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/menus/menu.\+hpp\item 
+src/menus/menu.\+cpp\end{DoxyCompactItemize}

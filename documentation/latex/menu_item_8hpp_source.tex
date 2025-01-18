@@ -1,0 +1,41 @@
+\doxysection{menu\+Item.\+hpp}
+\hypertarget{menu_item_8hpp_source}{}\label{menu_item_8hpp_source}\index{include/menus/menuItem.hpp@{include/menus/menuItem.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MENU\_ITEM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MENU\_ITEM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}./../../Enums/MenuOptions.cpp"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu_item_af163cb33b8a2acfa04c0837e5f46010b}{MenuItem}}\{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{int}\ valor;}
+\DoxyCodeLine{00013\ \ \ \textcolor{keywordtype}{string}\ texto;}
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{bool}\ abreMenu;}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{bool}\ fechaMenu;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{class_menu_item_af163cb33b8a2acfa04c0837e5f46010b}{MenuItem}}(\textcolor{keywordtype}{int}\ valor,\ \textcolor{keywordtype}{string}\ texto,\ \textcolor{keywordtype}{bool}\ abreMenu)}
+\DoxyCodeLine{00026\ \ \ \ :\ valor(valor),\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ texto(texto),\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ abreMenu(abreMenu),\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ fechaMenu(valor\ ==\ voltar)\ }
+\DoxyCodeLine{00030\ \ \ \{\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_item_a846944f5532f0802a3e28a84216c6633}{imprimirLinha}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_item_a2216e892ea1e5fb08ed8e7743e9d1b60}{getValor}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_item_afeb2808cc202bfa69269c0d68001ae1b}{getAbreMenu}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_item_af35da6a062f5ea679288025ae48ff987}{getFechaMenu}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
