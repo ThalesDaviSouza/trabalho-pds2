@@ -5,7 +5,7 @@
 #include "./../include/menus/menu.hpp"
 #include "./../Enums/MenuOptions.cpp"
 #include "./../shared/Utils.cpp"
-#include "./../include/tabuleiro.hpp"
+#include "./../include/tabuleiros/tabuleiro.hpp"
 #include "./../Enums/Cor.cpp"
 
 using namespace std;

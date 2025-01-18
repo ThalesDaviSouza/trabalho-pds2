@@ -1,52 +1,79 @@
 \doxysection{tabuleiro.\+hpp}
-\hypertarget{tabuleiro_8hpp_source}{}\label{tabuleiro_8hpp_source}\index{include/tabuleiro.hpp@{include/tabuleiro.hpp}}
+\hypertarget{tabuleiro_8hpp_source}{}\label{tabuleiro_8hpp_source}\index{include/tabuleiros/tabuleiro.hpp@{include/tabuleiros/tabuleiro.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TABULEIRO\_HPP}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TABULEIRO\_HPP}}
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}./../Enums/Cor.cpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}./../../Enums/Cor.cpp"{}}}
 \DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }Tabuleiro\{}
-\DoxyCodeLine{00010\ \textcolor{keyword}{protected}:\ }
-\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ colunas;}
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ linhas;}
-\DoxyCodeLine{00013\ \ \ \ \ vector<vector<int>>\ tabuleiro\_;}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ COLUNAS\_LIG4\ 7}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ LINHAS\_LIG4\ 6}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ QTD\_VITORIA\_LIG4\ 4}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ COLUNAS\_VELHA\ 3}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ LINHAS\_VELHA\ 3}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ QTD\_VITORIA\_VELHA\ 3}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \ \ Tabuleiro(\textcolor{keywordtype}{int}\ colunas\_,\ \textcolor{keywordtype}{int}\ linhas\_);}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ printTabuleiro();}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor);}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor);}
-\DoxyCodeLine{00020\ \};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }Tabuleiro\_Lig4\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00024\ \ \ \ \ \ Tabuleiro\_Lig4();}
-\DoxyCodeLine{00025\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada\ (\textcolor{keywordtype}{int}\ y)\textcolor{keyword}{override};}
-\DoxyCodeLine{00027\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarVitoria(\textcolor{keywordtype}{int}\ tabuleiro\_[6][7]);}
-\DoxyCodeLine{00028\ \};\ }
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }Tabuleiro\_JogoDaVelha\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00032\ \ \ \ \ \ Tabuleiro\_JogoDaVelha(\textcolor{keywordtype}{int}\ linhas\_,\ \textcolor{keywordtype}{int}\ colunas\_);}
-\DoxyCodeLine{00033\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00034\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00035\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarVitoria();}
-\DoxyCodeLine{00036\ \};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }Tabuleiro\_Reversi\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
-\DoxyCodeLine{00039\ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00040\ \ \ \ \ \ Tabuleiro\_Reversi(\textcolor{keywordtype}{int}\ linhas\_,\ \textcolor{keywordtype}{int}\ colunas\_);}
-\DoxyCodeLine{00041\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00042\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Cor\ cor)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00043\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarVitoria();}
-\DoxyCodeLine{00044\ \};}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }Tabuleiro\{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{protected}:\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ colunas;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ linhas;}
+\DoxyCodeLine{00021\ \ \ \ \ vector<vector<Cor>>\ tabuleiro\_;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ linhaUltimaJogada\ =\ -\/1;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ colunaUltimaJogada\ =\ -\/1;}
+\DoxyCodeLine{00024\ \ \ \ \ Cor\ corUltimaJogada\ =\ Vazio;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ posicaoEhValida(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ verificarHorizontal(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ \textcolor{keywordtype}{int}\ quantParaVitoria);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ verificarBaixo(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ \textcolor{keywordtype}{int}\ quantParaVitoria);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ verificarDiagonalBaixo(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ \textcolor{keywordtype}{int}\ quantParaVitoria);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ verificarDiagonalCima(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ \textcolor{keywordtype}{int}\ quantParaVitoria);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ Tabuleiro(\textcolor{keywordtype}{int}\ colunas\_,\ \textcolor{keywordtype}{int}\ linhas\_);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ printTabuleiro();}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ Cor\ cor);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ Cor\ cor)\ =\ 0;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tabuleiro_a8fc425e3e6582278d0d63a2289942fe2}{verificarVitoria}}()\ =\ 0;\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ getLinhaUltimaJogada();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ getColunaUltimaJogada();}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{class\ }Tabuleiro\_Lig4\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \textcolor{keywordtype}{int}\ getLinhaVazia(\textcolor{keywordtype}{int}\ coluna);}
+\DoxyCodeLine{00051\ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ Tabuleiro\_Lig4();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ coluna,\ Cor\ cor);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tabuleiro___lig4_af9637dde6d60ad182385d7385486cf2e}{verificarVitoria}}();\ }
+\DoxyCodeLine{00058\ \};\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{class\ }Tabuleiro\_JogoDaVelha\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ \ \ \ \ \ Tabuleiro\_JogoDaVelha();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tabuleiro___jogo_da_velha_a4417d73cedb342afea07509c771cfb9f}{verificarVitoria}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{class\ }Tabuleiro\_Reversi\ :\ \textcolor{keyword}{public}\ Tabuleiro\{\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00070\ \ \ \ \ \ Tabuleiro\_Reversi(\textcolor{keywordtype}{int}\ linhas\_,\ \textcolor{keywordtype}{int}\ colunas\_);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarJogada(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \textcolor{keywordtype}{void}\ fazerJogada(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ Cor\ cor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tabuleiro___reversi_a485b059fdd2f83ba9645e454f73f91bc}{verificarVitoria}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
