@@ -3,7 +3,10 @@
 #include <iostream>
 #include <vector>
 #include "./../Enums/Cor.cpp"
-#include "./../Enums/Direcao.hpp"
+// #include "./../Enums/Direcao.hpp"
+
+#define COLUNAS_LIG4 6
+#define LINHAS_LIG4 7
 
 using namespace std;
 
@@ -11,7 +14,7 @@ class Tabuleiro{
 protected: 
     int colunas;
     int linhas;
-    vector<vector<int>> tabuleiro_;
+    vector<vector<Cor>> tabuleiro_;
 
 public:
     Tabuleiro(int colunas_, int linhas_);

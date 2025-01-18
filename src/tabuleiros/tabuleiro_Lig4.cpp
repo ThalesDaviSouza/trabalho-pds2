@@ -1,5 +1,5 @@
 #include <iostream>
-#include "./../include/tabuleiro.hpp"
+#include "./../../include/tabuleiro.hpp"
 
 using namespace std;
 
@@ -29,7 +29,6 @@ bool Tabuleiro_Lig4::verificarJogada(int x, int y, Cor cor)
 
     throw invalid_argument("jogada inválida");
 
-    // TODO: Lançar excessão
 }
 
 void Tabuleiro_Lig4::fazerJogada(int x, int y, Cor cor)
@@ -40,7 +39,7 @@ void Tabuleiro_Lig4::fazerJogada(int x, int y, Cor cor)
     }
 };
 
-bool verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro de parametros
+bool Tabuleiro_Lig4::verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro de parametros
 {
 
     /*
@@ -63,7 +62,7 @@ bool verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro 
     contador = 1; // Reseta o contador
     for (int i = 1; i < 4; i++)
     { // Verificando até 3 casass
-        if (y + i < 7 && tabuleiro[x][y + i] == cor_atual)
+        if (y + i < 7 && tabuleiro_[x][y + i] == cor_atual)
         {
             contador++;
         }
@@ -79,7 +78,7 @@ bool verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro 
     contador = 1;
     for (int i = 1; i < 4; i++)
     {
-        if (y - i >= 0 && tabuleiro[x][y - i] == cor_atual)
+        if (y - i >= 0 && tabuleiro_[x][y - i] == cor_atual)
         {
             contador++;
         }
@@ -95,7 +94,7 @@ bool verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro 
     contador = 1;
     for (int i = 1; i < 4; i++)
     {
-        if (x + i < 6 && tabuleiro[x + i][y] == cor_atual)
+        if (x + i < 6 && tabuleiro_[x + i][y] == cor_atual)
         {
             contador++;
         }
@@ -111,7 +110,7 @@ bool verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro 
     contador = 1;
     for (int i = 1; i < 4; i++)
     {
-        if (x + i < 6 && y + i < 7 && tabuleiro[x + i][y + i] == cor_atual)
+        if (x + i < 6 && y + i < 7 && tabuleiro_[x + i][y + i] == cor_atual)
         {
             contador++;
         }
@@ -127,7 +126,7 @@ bool verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro 
     contador = 1;
     for (int i = 1; i < 4; i++)
     {
-        if (x - i >= 0 && y - i >= 0 && tabuleiro[x - i][y - i] == cor_atual)
+        if (x - i >= 0 && y - i >= 0 && tabuleiro_[x - i][y - i] == cor_atual)
         {
             contador++;
         }
@@ -143,7 +142,7 @@ bool verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro 
     contador = 1;
     for (int i = 1; i < 4; i++)
     {
-        if (x + i < 6 && y - i >= 0 && tabuleiro[x + i][y - i] == cor_atual)
+        if (x + i < 6 && y - i >= 0 && tabuleiro_[x + i][y - i] == cor_atual)
         {
             contador++;
         }
@@ -159,7 +158,7 @@ bool verificarVitoria(int x, int y, Cor cor_atual) //TODO: como tirar tabuleiro 
     contador = 1;
     for (int i = 1; i < 4; i++)
     {
-        if (x - i >= 0 && y + i < 7 && tabuleiro[x - i][y + i] == cor_atual)
+        if (x - i >= 0 && y + i < 7 && tabuleiro_[x - i][y + i] == cor_atual)
         {
             contador++;
         }

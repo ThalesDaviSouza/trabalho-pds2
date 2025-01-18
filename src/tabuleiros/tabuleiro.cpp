@@ -1,5 +1,5 @@
 #include <iostream>
-#include "tabuleiro.hpp"
+#include "./../../include/tabuleiro.hpp"
 
 using namespace std;
 
@@ -8,7 +8,7 @@ Tabuleiro::Tabuleiro(int colunas_, int linhas_)
     this->colunas = colunas_;
     this->linhas = linhas_;
 
-    tabuleiro_ = vector<vector<int>>(linhas, vector<int>(colunas, 0));
+    tabuleiro_ = vector<vector<Cor>>(linhas, vector<Cor>(colunas));
 }
 
 void Tabuleiro::printTabuleiro()
@@ -23,18 +23,25 @@ void Tabuleiro::printTabuleiro()
     }
 };
 
+bool foraDoLimite(int x, int max)
+{
+    return (x < 0 || x >= max);
+}
+
 bool Tabuleiro::verificarJogada(int x, int y, Cor cor)
 {
     // verificar se jogada está nos limites do tabuleiro
-    if (x < 0 || x >= linhas || y < 0 || y >= colunas)
+    if (foraDoLimite(x, this->linhas) || foraDoLimite(y, this->colunas))
     {
         return false;
     }
+    
     // verificar se o espaço está disponível
-    if (x != 0 || y != 0)
+    if (x != Nenhuma || y != Nenhuma)
     {
         return false;
     }
+
     // jogada permitida
     return true;
 };
@@ -46,4 +53,3 @@ void Tabuleiro::fazerJogada(int x, int y, Cor cor)
         tabuleiro_[x][y] = cor;
     }
 }
-
