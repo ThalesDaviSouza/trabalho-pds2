@@ -3,3 +3,8 @@
 /build
 /data
 .vscode
+
+*.html
+*.css
+*.gcno
+*.gcda

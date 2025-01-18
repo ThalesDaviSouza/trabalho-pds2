@@ -5,15 +5,23 @@
 #include <iostream>
 #include <typeinfo>
 
-TEST_CASE("Menu: Dada uma acao retornar verdadeiro ou falso") {
+TEST_CASE("Menu: Dada uma acao retornar verdadeiro") {
   Menu menu(true);
 
   CHECK(menu.validarAcao(gerenciarJogadores) == true);
   CHECK(menu.validarAcao(fecharPrograma) == true);
-  CHECK(menu.validarAcao(voltar) == false);
-  CHECK(menu.validarAcao(nenhuma) == false);
 
 }
+
+TEST_CASE("Menu: Dada uma acao retornar falso") {
+  Menu menu(true);
+
+  CHECK(menu.validarAcao(voltar) == false);
+  CHECK(menu.validarAcao(nenhuma) == false);
+  
+}
+
+
 
 TEST_CASE("Menu: dada uma acao retornar se ela abre o menu ou nao") {
   Menu menu(true);
