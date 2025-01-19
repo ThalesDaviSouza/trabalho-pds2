@@ -7,13 +7,16 @@
 #define COLUNAS_LIG4 7
 #define LINHAS_LIG4 6
 #define QTD_VITORIA_LIG4 4
+#define QTD_JOGADORES_LIG4 2
 
 #define COLUNAS_VELHA 3
 #define LINHAS_VELHA 3
 #define QTD_VITORIA_VELHA 3
+#define QTD_JOGADORES_VELHA 2
 
 #define COLUNAS_REVERSI 8
 #define LINHAS_REVERSI 8
+#define QTD_JOGADORES_REVERSI 2
 
 using namespace std;
 
@@ -46,6 +49,7 @@ public:
 
     int getLinhaUltimaJogada();
     int getColunaUltimaJogada();
+    Cor getCorUltimaJogada();
 };
 
 class Tabuleiro_Lig4 : public Tabuleiro{ 

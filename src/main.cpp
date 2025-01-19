@@ -2,15 +2,17 @@
 #include <stack>
 
 #include "./../include/gerenciadorDeJogadores.hpp"
+#include "./../include/gerenciadorDeJogos.hpp"
 #include "./../include/menus/menu.hpp"
 #include "./../Enums/MenuOptions.cpp"
-#include "./../shared/Utils.cpp"
+#include "./../shared/Utils.hpp"
 #include "./../include/tabuleiros/tabuleiro.hpp"
 #include "./../Enums/Cor.cpp"
 
 using namespace std;
 
 GerenciadorDeJogadores gerenciadorDeJogadores = GerenciadorDeJogadores("data", "dados.txt");
+GerenciadorDeJogos gerenciadorDeJogos = GerenciadorDeJogos(gerenciadorDeJogadores);
 
 void addJogador(){
   string nome, apelido;
@@ -66,6 +68,7 @@ int main(){
     {
       menus.top()->imprimirMenu();
       cout << "Opcao: ";
+      
       if(!(cin >> escolha)){
         clearBuffer();
 
@@ -88,15 +91,38 @@ int main(){
           delete menuParaDeletar;
         }
         else{
-          if(escolha == adicionarJogador){
+          switch (escolha)
+          {
+          case adicionarJogador:
             addJogador();
-          }
-          else if(escolha == removerJogador){
+            break;
+          
+          case removerJogador:
             removeJogador();
-          }
-          else if(escolha == exibirJogadores){
+            break;
+          
+          case exibirJogadores:
+          case listarJogadoresCadastrados:
             gerenciadorDeJogadores.exibirJogadores();
+            break;
+          
+          case listarJogadoresPartida:
+            gerenciadorDeJogos.imprimirJogadores();
+            break;
+
+          case adicionarJogadorPartida:
+            gerenciadorDeJogos.selecionarJogador();
+            break;
+
+          case jogarJogoDaVelha:
+            gerenciadorDeJogos.JogarJogoDaVelha();
+            break;
+          
+          default:
+            throw out_of_range("Sem acao com esse codigo.");
+            break;
           }
+          
         }
       }
     }

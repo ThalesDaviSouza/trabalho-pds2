@@ -55,6 +55,8 @@ public:
    * @brief Salva todos os Jogadores carregados na lista no arquivo de dados.
    */
   bool salvarJogadores();
+
+  Jogador buscarJogador(string apelido);
 };
 
 #endif

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void clearBuffer(){
+inline void clearBuffer(){
   string lixo;
   cin.clear();
   getline(cin, lixo);

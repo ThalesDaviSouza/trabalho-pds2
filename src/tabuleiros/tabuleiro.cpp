@@ -183,3 +183,7 @@ bool Tabuleiro::verificarDiagonalCima(int linha, int coluna, int quantParaVitori
     return false;
 
 }
+
+Cor Tabuleiro::getCorUltimaJogada(){
+    return this->corUltimaJogada;
+}

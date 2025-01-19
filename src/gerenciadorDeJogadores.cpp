@@ -129,3 +129,13 @@ bool GerenciadorDeJogadores::salvarJogadores(){
   arquivo.close();
 
 }
+
+Jogador GerenciadorDeJogadores::buscarJogador(string apelido){
+  for(auto& jogador : jogadores){
+    if(jogador.getApelido().compare(apelido) == 0){
+      return jogador;
+    }
+  }
+
+  throw out_of_range("Jogador nao encontrado");
+}
