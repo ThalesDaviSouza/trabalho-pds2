@@ -187,3 +187,15 @@ bool Tabuleiro::verificarDiagonalCima(int linha, int coluna, int quantParaVitori
 Cor Tabuleiro::getCorUltimaJogada(){
     return this->corUltimaJogada;
 }
+
+int Tabuleiro::getQuantidadeLinhas(){
+  return linhas;
+}
+
+int Tabuleiro::getQuantidadeColunas(){
+  return colunas;
+}
+
+vector<vector<Cor>> Tabuleiro::getTabuleiro(){
+  return tabuleiro_;
+}

@@ -50,6 +50,11 @@ public:
     int getLinhaUltimaJogada();
     int getColunaUltimaJogada();
     Cor getCorUltimaJogada();
+
+    int getQuantidadeLinhas();
+    int getQuantidadeColunas();
+
+    vector<vector<Cor>> getTabuleiro();
 };
 
 class Tabuleiro_Lig4 : public Tabuleiro{ 
@@ -83,7 +88,7 @@ class Tabuleiro_Reversi : public Tabuleiro{
      bool verificarJogada(int linha, int coluna, Cor cor) override;
      void fazerJogada(int linha, int coluna, Cor cor) override;
      bool verificarVitoria() override;
-     pair<Cor, int> retornarGanhador();
+
 };
 
 #endif

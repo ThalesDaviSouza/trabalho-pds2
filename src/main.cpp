@@ -118,6 +118,14 @@ int main(){
             gerenciadorDeJogos.JogarJogoDaVelha();
             break;
           
+          case jogarLig4:
+            gerenciadorDeJogos.JogarLig4();
+            break;
+          
+          case jogarReversi:
+            gerenciadorDeJogos.JogarReversi();
+            break;
+          
           default:
             throw out_of_range("Sem acao com esse codigo.");
             break;

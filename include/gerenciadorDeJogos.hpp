@@ -21,6 +21,8 @@ public:
   ~GerenciadorDeJogos();
   
   void JogarJogoDaVelha();
+  void JogarLig4();
+  void JogarReversi();
   void imprimirJogadores();
   void selecionarJogador();
 
