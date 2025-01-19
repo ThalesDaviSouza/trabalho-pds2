@@ -4,6 +4,9 @@
 #include <string>
 #include <vector>
 #include "./jogador.hpp"
+#include "./jogadorInGame.hpp"
+#include "./partida.hpp"
+#include "./../Enums/Jogo.cpp"
 
 using namespace std;
 
@@ -11,8 +14,10 @@ class GerenciadorDeJogadores {
 private:
   string nomeArquivo;
   string caminhoPasta;
-  string caminhoArquivo;
+  string caminhoArquivoJogadores;
+  string caminhoArquivoPartidas;
   vector<Jogador> jogadores;
+  vector<RegistroPartida> registroPartidas;
 
 public:
   /**
@@ -21,7 +26,7 @@ public:
    * @param caminhoPasta Caminho relativo onde ficam os dados.
    * @param nomeArquivo Nome do arquivo onde ficam os dados.
    */
-  GerenciadorDeJogadores(string caminhoPasta, string nomeArquivo);
+  GerenciadorDeJogadores(string caminhoPasta, string nomeArquivoJogadores, string nomeArquivoPartidas);
   ~GerenciadorDeJogadores() = default;
 
   /**
@@ -57,6 +62,17 @@ public:
   bool salvarJogadores();
 
   Jogador buscarJogador(string apelido);
+  
+  /**
+   * @brief Adiciona o registro para quando o jogo possui pontuacao
+   */
+  void adicionarRegistroDePartida(string apelido, Jogo jogo, bool ganhou, int pontuacao);
+  void adicionarRegistroDePartida(string apelido, Jogo jogo, bool ganhou);
+  
+  vector<RegistroPartida>  getRegistrosDePartida(string apelido);
+
+  bool salvarPartidas();
+
 };
 
 #endif

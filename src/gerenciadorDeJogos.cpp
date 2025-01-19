@@ -124,6 +124,14 @@ void GerenciadorDeJogos::JogarJogoDaVelha(){
 
   cout << "Vencedor: " << ganhador.getJogador().getNome() << endl;
 
+  bool ganhou = false;
+
+  for(auto& jogador : jogadores){
+    ganhou = (jogador.getJogador().getApelido().compare(ganhador.getJogador().getApelido()) == 0);
+
+    gerenciadorDeJogadores.adicionarRegistroDePartida(jogador.getJogador().getApelido(), jogoDaVelha, ganhou);
+  }
+
   delete tabuleiro;
   
 }

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-GerenciadorDeJogadores gerenciadorDeJogadores = GerenciadorDeJogadores("data", "dados.txt");
+GerenciadorDeJogadores gerenciadorDeJogadores = GerenciadorDeJogadores("data", "jogadores.txt", "partidas.txt");
 GerenciadorDeJogos gerenciadorDeJogos = GerenciadorDeJogos(gerenciadorDeJogadores);
 
 void addJogador(){
@@ -153,6 +153,7 @@ int main(){
   }
 
   gerenciadorDeJogadores.salvarJogadores();
+  gerenciadorDeJogadores.salvarPartidas();
 
   return 0;
 }
