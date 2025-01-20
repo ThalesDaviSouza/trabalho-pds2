@@ -10,7 +10,7 @@ bool Tabuleiro_Lig4::verificarJogada(int /*linha*/, int coluna, Cor cor)
     /* REGRAS
     -o tabuleiro é preenchido de cima para baixo
     -se uma peça foi colocada embaixo, a outra vai em cima
-    -só podem em espaços vazios
+    -só podem ser colcadas peças em espaços vazios
     */
 
     // verifica se a jogada foi feita nos limites do tabuleiro
@@ -58,7 +58,7 @@ void Tabuleiro_Lig4::fazerJogada(int coluna, Cor cor)
         corUltimaJogada = cor;
     }
     else{
-        throw invalid_argument("Essa coluna esta cheia");
+        throw invalid_argument("Essa coluna está cheia");
     }
 };
 

@@ -82,7 +82,7 @@ $(BUILD_TESTS_TABULEIROS):
 
 # Gera o relatório
 report: aviso_report $(TARGET_COVERAGE) | clean 
-	$(TARGET_COVERAGE)
+	./$(TARGET_COVERAGE)
 	gcovr -r . --html --html-details -o report.html --exclude 'tests/.*'
 	@echo Report gerado com sucesso!
 	@echo Para conferir ele, abra o arquivo report.html

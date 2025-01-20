@@ -8,3 +8,7 @@
 *.css
 *.gcno
 *.gcda
+*.tex
+*.eps
+*.js
+*.png

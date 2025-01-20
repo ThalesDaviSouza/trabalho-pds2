@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['tabuleiro_0',['Tabuleiro',['../class_tabuleiro.html',1,'']]],
-  ['tabuleiro_5fjogodavelha_1',['Tabuleiro_JogoDaVelha',['../class_tabuleiro___jogo_da_velha.html',1,'']]],
-  ['tabuleiro_5flig4_2',['Tabuleiro_Lig4',['../class_tabuleiro___lig4.html',1,'']]],
-  ['tabuleiro_5freversi_3',['Tabuleiro_Reversi',['../class_tabuleiro___reversi.html',1,'']]]
+  ['tabuleiro_25',['Tabuleiro',['../classTabuleiro.html',1,'']]],
+  ['tabuleiro_5fjogodavelha_26',['Tabuleiro_JogoDaVelha',['../classTabuleiro__JogoDaVelha.html',1,'']]],
+  ['tabuleiro_5flig4_27',['Tabuleiro_Lig4',['../classTabuleiro__Lig4.html',1,'']]],
+  ['tabuleiro_5freversi_28',['Tabuleiro_Reversi',['../classTabuleiro__Reversi.html',1,'']]]
 ];
