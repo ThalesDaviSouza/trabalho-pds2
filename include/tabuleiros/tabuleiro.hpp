@@ -18,6 +18,9 @@
 #define LINHAS_VELHA 3
 #define QTD_VITORIA_VELHA 3
 
+#define COLUNAS_REVERSI 8
+#define LINHAS_REVERSI 8
+
 using namespace std;
 
 /**
@@ -279,18 +282,12 @@ public:
     bool verificarVitoria() override;
 };
 
-/**
- * @class Tabuleiro_Reversi.
- *
- * @brief Classe filha de 'Tabuleiro', representa os tabuleiros do Reversi.
- */
-class Tabuleiro_Reversi : public Tabuleiro
-{
-public:
-    Tabuleiro_Reversi(int linhas_, int colunas_);
-    bool verificarJogada(int linha, int coluna, Cor cor) override;
-    void fazerJogada(int linha, int coluna, Cor cor) override;
-    bool verificarVitoria() override;
+class Tabuleiro_Reversi : public Tabuleiro{ 
+     public:
+     Tabuleiro_Reversi(int linhas_, int colunas_);
+     bool verificarJogada(int linha, int coluna, Cor cor) override;
+     void fazerJogada(int linha, int coluna, Cor cor) override;
+     bool verificarVitoria() override;
 };
 
 #endif

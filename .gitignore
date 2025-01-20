@@ -6,6 +6,8 @@
 
 *.html
 *.css
+*.js
+*.png
 *.gcno
 *.gcda
 *.tex
