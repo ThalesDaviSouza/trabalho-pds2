@@ -8,31 +8,46 @@
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}./jogador.hpp"{}}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b}{GerenciadorDeJogadores}}\ \{}
-\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{string}\ nomeArquivo;}
-\DoxyCodeLine{00013\ \ \ \textcolor{keywordtype}{string}\ caminhoPasta;}
-\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{string}\ caminhoArquivo;}
-\DoxyCodeLine{00015\ \ \ vector<Jogador>\ jogadores;}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b}{GerenciadorDeJogadores}}(\textcolor{keywordtype}{string}\ caminhoPasta,\ \textcolor{keywordtype}{string}\ nomeArquivo);}
-\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b}{\string~GerenciadorDeJogadores}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_a2c0a4e893fbd64f2291901aaf84a0c89}{exibirJogadores}}();}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}./jogadorInGame.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}./partida.hpp"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}./../Enums/Jogo.cpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_gerenciador_de_jogadores_ac3379ceae5ca2604744303a32972d47a}{GerenciadorDeJogadores}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{string}\ nomeArquivo;}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{string}\ caminhoPasta;}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{string}\ caminhoArquivoJogadores;}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{string}\ caminhoArquivoPartidas;}
+\DoxyCodeLine{00019\ \ \ vector<Jogador>\ jogadores;}
+\DoxyCodeLine{00020\ \ \ vector<RegistroPartida>\ registroPartidas;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{class_gerenciador_de_jogadores_ac3379ceae5ca2604744303a32972d47a}{GerenciadorDeJogadores}}(\textcolor{keywordtype}{string}\ caminhoPasta,\ \textcolor{keywordtype}{string}\ nomeArquivoJogadores,\ \textcolor{keywordtype}{string}\ nomeArquivoPartidas);}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{class_gerenciador_de_jogadores_ac3379ceae5ca2604744303a32972d47a}{\string~GerenciadorDeJogadores}}()\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_af32d5f63a6417c336f94e6bdee2b55c4}{adicionarJogador}}(\textcolor{keywordtype}{string}\&\ nome,\ \textcolor{keywordtype}{string}\&\ apelido);}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_abb16a324c99b9b5e67fdd5195b472983}{removerJogador}}(\textcolor{keywordtype}{string}\&\ apelido);}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_add4292c8b1a8030b038e894aed2b8384}{jogadorEhValido}}(\textcolor{keywordtype}{string}\&\ apelido);}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_a470f3233c7ecbf90206bd8061f60c18f}{salvarJogadores}}();}
-\DoxyCodeLine{00058\ \};}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_a2c0a4e893fbd64f2291901aaf84a0c89}{exibirJogadores}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_af32d5f63a6417c336f94e6bdee2b55c4}{adicionarJogador}}(\textcolor{keywordtype}{string}\&\ nome,\ \textcolor{keywordtype}{string}\&\ apelido);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_abb16a324c99b9b5e67fdd5195b472983}{removerJogador}}(\textcolor{keywordtype}{string}\&\ apelido);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_add4292c8b1a8030b038e894aed2b8384}{jogadorEhValido}}(\textcolor{keywordtype}{string}\&\ apelido);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_a470f3233c7ecbf90206bd8061f60c18f}{salvarJogadores}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{class_jogador}{Jogador}}\ buscarJogador(\textcolor{keywordtype}{string}\ apelido);}
+\DoxyCodeLine{00065\ \ \ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_a86b4b44828424c19483fb1b05247f6fb}{adicionarRegistroDePartida}}(\textcolor{keywordtype}{string}\ apelido,\ Jogo\ jogo,\ \textcolor{keywordtype}{bool}\ ganhou,\ \textcolor{keywordtype}{int}\ pontuacao);}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gerenciador_de_jogadores_a86b4b44828424c19483fb1b05247f6fb}{adicionarRegistroDePartida}}(\textcolor{keywordtype}{string}\ apelido,\ Jogo\ jogo,\ \textcolor{keywordtype}{bool}\ ganhou);}
+\DoxyCodeLine{00071\ \ \ }
+\DoxyCodeLine{00072\ \ \ vector<RegistroPartida>\ \ getRegistrosDePartida(\textcolor{keywordtype}{string}\ apelido);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{bool}\ salvarPartidas();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

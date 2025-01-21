@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['gerenciadordejogadores_0',['GerenciadorDeJogadores',['../class_gerenciador_de_jogadores.html#a5967cf576ab4413d08e588e4d28d826b',1,'GerenciadorDeJogadores']]],
+  ['gerenciadordejogadores_0',['GerenciadorDeJogadores',['../class_gerenciador_de_jogadores.html#ac3379ceae5ca2604744303a32972d47a',1,'GerenciadorDeJogadores']]],
   ['getabremenu_1',['getAbreMenu',['../class_menu_item.html#afeb2808cc202bfa69269c0d68001ae1b',1,'MenuItem']]],
   ['getapelido_2',['getApelido',['../class_jogador.html#a166828093edf9de96882f54ca30b5868',1,'Jogador']]],
   ['getcor_3',['getCor',['../class_jogador_in_game.html#ace517f2651ecbec634a0bb15bed691d9',1,'JogadorInGame']]],

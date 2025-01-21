@@ -4,5 +4,6 @@ var searchData=
   ['acaoabremenu_1',['acaoAbreMenu',['../class_menu.html#a133ff28662d9a89d2e52fe4ba926cc63',1,'Menu']]],
   ['acaoencerraprograma_2',['acaoEncerraPrograma',['../class_menu.html#aecd184a9f6228d971036b6eec117a32d',1,'Menu']]],
   ['acaofechamenu_3',['acaoFechaMenu',['../class_menu.html#ac5c22fb74412115be7eccad508e17a8b',1,'Menu']]],
-  ['adicionarjogador_4',['adicionarJogador',['../class_gerenciador_de_jogadores.html#af32d5f63a6417c336f94e6bdee2b55c4',1,'GerenciadorDeJogadores']]]
+  ['adicionarjogador_4',['adicionarJogador',['../class_gerenciador_de_jogadores.html#af32d5f63a6417c336f94e6bdee2b55c4',1,'GerenciadorDeJogadores']]],
+  ['adicionarregistrodepartida_5',['adicionarRegistroDePartida',['../class_gerenciador_de_jogadores.html#a86b4b44828424c19483fb1b05247f6fb',1,'GerenciadorDeJogadores']]]
 ];

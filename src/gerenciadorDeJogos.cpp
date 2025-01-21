@@ -1,6 +1,7 @@
 #include "./../include/gerenciadorDeJogos.hpp"
 #include "./../include/gerenciadorDeJogadores.hpp"
 #include "./../include/jogadorInGame.hpp"
+#include "./../include/minmax.hpp"
 #include "./../shared/Utils.hpp"
 
 #include <iostream>
@@ -46,9 +47,21 @@ void GerenciadorDeJogos::selecionarJogador(){
 
   Jogador jog = gerenciadorDeJogadores.buscarJogador(apelido);
 
+  for(auto& jogador : jogadores){
+    if(jogador.getJogador().getApelido().compare(jog.getApelido()) == 0){
+      throw invalid_argument("Jogador ja esta em jogo");
+    }
+  }
+
   cout << "Escolha a cor: ";
   cin >> aux;
   cor = static_cast<Cor>(aux);
+
+  for(auto& jogador : jogadores){
+    if(jogador.getCor() == cor){
+      throw invalid_argument("O time escolhido ja esta em jogo");
+    }
+  }
 
   JogadorInGame jogador(jog, cor);
 
@@ -57,7 +70,18 @@ void GerenciadorDeJogos::selecionarJogador(){
 }
 
 void GerenciadorDeJogos::JogarJogoDaVelha(){
-  if((int)jogadores.size() != QTD_JOGADORES_VELHA){
+  bool ativarIA = false;
+  Cor corIA = Vazio;
+  JogadorInGame* jogadorIa = nullptr;
+
+  if((int)jogadores.size() == 1){
+    ativarIA = true;
+    corIA = jogadores.at(0).getCor() == X ? O : X;
+
+    Jogador aux("IA", "IA");
+    jogadorIa = new JogadorInGame(aux, corIA);
+  }
+  else if((int)jogadores.size() != QTD_JOGADORES_VELHA){
     string msgErro = "A quantidade de jogadores para jogo da velha deve ser ";
     msgErro.append(to_string(QTD_JOGADORES_VELHA));
 
@@ -70,6 +94,8 @@ void GerenciadorDeJogos::JogarJogoDaVelha(){
   int linha, coluna;
   int posProxJogador = 0;
   bool jogadaValida = false;
+
+  cout << "Jogar conta a maquina: " << ativarIA << endl;
 
   while (!tabuleiro->verificarVitoria())
   {
@@ -98,7 +124,14 @@ void GerenciadorDeJogos::JogarJogoDaVelha(){
     
     tabuleiro->fazerJogada(linha, coluna, jogadorAtual.getCor());
 
-    posProxJogador = (posProxJogador == 0) ? 1 : 0;
+    if(!ativarIA){
+      posProxJogador = (posProxJogador == 0) ? 1 : 0;
+    }
+    else if(!tabuleiro->verificarVitoria()){
+      pair<int, int> jogadaIA = MinMaxNode::obterJogadaAgente(tabuleiro, *jogadorIa, jogadorAtual);
+      cout << "Jogada IA " << jogadaIA.first << jogadaIA.second << endl;
+      tabuleiro->fazerJogada(jogadaIA.first, jogadaIA.second, corIA);
+    }
     
     jogadorAtual = jogadores.at(posProxJogador);
 
@@ -130,6 +163,10 @@ void GerenciadorDeJogos::JogarJogoDaVelha(){
     ganhou = (jogador.getJogador().getApelido().compare(ganhador.getJogador().getApelido()) == 0);
 
     gerenciadorDeJogadores.adicionarRegistroDePartida(jogador.getJogador().getApelido(), jogoDaVelha, ganhou);
+  }
+  
+  if(ativarIA){
+    delete jogadorIa;
   }
 
   delete tabuleiro;

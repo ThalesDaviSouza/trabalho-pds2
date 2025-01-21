@@ -55,6 +55,7 @@ public:
     int getQuantidadeColunas();
 
     vector<vector<Cor>> getTabuleiro();
+    vector<vector<Cor>>& getTabuleiroRef();
 };
 
 class Tabuleiro_Lig4 : public Tabuleiro{ 

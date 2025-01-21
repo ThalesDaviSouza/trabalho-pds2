@@ -40,7 +40,7 @@ GerenciadorDeJogadores::GerenciadorDeJogadores(
       ofstream arquivoJogadoresCriado(caminhoArquivoJogadores);
 
       if(!arquivoJogadoresCriado.is_open()){
-        cout << "Não foi possível criar o arquivo de dados de jogadores" << endl;
+        cout << "Nao foi possível criar o arquivo de dados de jogadores" << endl;
         exit(-1);
       }
       arquivoJogadoresCriado.close();
@@ -50,7 +50,7 @@ GerenciadorDeJogadores::GerenciadorDeJogadores(
       ofstream arquivoPartidasCriado(caminhoArquivoPartidas);
 
       if(!arquivoPartidasCriado.is_open()){
-        cout << "Não foi possível criar o arquivo de dados de partidas" << endl;
+        cout << "Nao foi possivel criar o arquivo de dados de partidas" << endl;
         exit(-1);
       }
       arquivoPartidasCriado.close();

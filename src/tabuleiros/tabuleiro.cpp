@@ -40,7 +40,7 @@ bool Tabuleiro::verificarJogada(int x, int y, Cor cor)
     }
     
     // verificar se o espaço está disponível
-    if (x != Vazio || y != Vazio)
+    if (tabuleiro_[x][y] != Vazio)
     {
         return false;
     }
@@ -197,5 +197,8 @@ int Tabuleiro::getQuantidadeColunas(){
 }
 
 vector<vector<Cor>> Tabuleiro::getTabuleiro(){
+  return tabuleiro_;
+}
+vector<vector<Cor>>& Tabuleiro::getTabuleiroRef(){
   return tabuleiro_;
 }

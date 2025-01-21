@@ -1,6 +1,7 @@
 #include "./third-party/doctest.h"
 #include "./../include/gerenciadorDeJogadores.hpp"
 
+
 TEST_SUITE("Gerenciador de Jogadores: Adicionar jogadores"){
   TEST_CASE("Gerenciador de Jogadores: dado 1 nome e 1 apelido adicionar o jogador na lista"){
     GerenciadorDeJogadores gerenciador("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
