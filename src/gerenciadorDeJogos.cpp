@@ -137,30 +137,38 @@ void GerenciadorDeJogos::JogarJogoDaVelha(){
 
   }
 
+  JogadorInGame* ganhador = nullptr;
+
   Cor corGanhador = tabuleiro->getCorUltimaJogada();
-  int posGanhador = 0;
-
-  for(auto& jog : jogadores){
-    if(jog.getCor() == corGanhador){
-      break;
-    }
-    else{
-      posGanhador++;
-    }
+  if(ativarIA && corGanhador == corIA){
+    ganhador = jogadorIa;
   }
+  else{
+    int posGanhador = 0;
 
-  JogadorInGame ganhador = jogadores.at(posGanhador);
+    for(auto& jog : jogadores){
+      if(jog.getCor() == corGanhador){
+        break;
+      }
+      else{
+        posGanhador++;
+      }
+    }
+
+    ganhador = &jogadores.at(posGanhador);
+
+  }
 
   tabuleiro->printTabuleiro();
 
   cout << endl << "O Jogo acabou!" << endl;
 
-  cout << "Vencedor: " << ganhador.getJogador().getNome() << endl;
+  cout << "Vencedor: " << ganhador->getJogador().getNome() << endl;
 
   bool ganhou = false;
 
   for(auto& jogador : jogadores){
-    ganhou = (jogador.getJogador().getApelido().compare(ganhador.getJogador().getApelido()) == 0);
+    ganhou = (jogador.getJogador().getApelido().compare(ganhador->getJogador().getApelido()) == 0);
 
     gerenciadorDeJogadores.adicionarRegistroDePartida(jogador.getJogador().getApelido(), jogoDaVelha, ganhou);
   }
