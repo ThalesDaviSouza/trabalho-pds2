@@ -4,6 +4,7 @@
 #include "./../include/gerenciadorDeJogadores.hpp"
 #include "./../include/gerenciadorDeJogos.hpp"
 #include "./../include/menus/menu.hpp"
+#include "./../include/menus/menuGerenciarJogos.hpp"
 #include "./../Enums/MenuOptions.cpp"
 #include "./../shared/Utils.hpp"
 #include "./../include/tabuleiros/tabuleiro.hpp"
@@ -87,6 +88,10 @@ int main(){
         else if(menus.top()->acaoFechaMenu(escolha)){
           Menu* menuParaDeletar = menus.top();
           menus.pop();
+          
+          if(dynamic_cast<MenuGerenciarJogos*>(menuParaDeletar) && gerenciadorDeJogos.getQuantidadeJogadores() > 0){
+            gerenciadorDeJogos.removerTodosJogadores();
+          }
 
           delete menuParaDeletar;
         }

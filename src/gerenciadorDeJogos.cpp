@@ -364,3 +364,12 @@ void GerenciadorDeJogos::JogarReversi(){
   delete tabuleiro;
   
 }
+
+
+void GerenciadorDeJogos::removerTodosJogadores(){
+  jogadores.clear();
+}
+
+int GerenciadorDeJogos::getQuantidadeJogadores(){
+  return (int)jogadores.size();
+}

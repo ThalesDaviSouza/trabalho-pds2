@@ -25,6 +25,8 @@ public:
   void JogarReversi();
   void imprimirJogadores();
   void selecionarJogador();
+  void removerTodosJogadores();
+  int getQuantidadeJogadores();
 
 };
 

@@ -63,12 +63,16 @@ void Tabuleiro_Lig4::fazerJogada(int coluna, Cor cor)
 };
 
 bool Tabuleiro_Lig4::verificarVitoria() 
-{   
+{  
+    int espacosEmBranco = 0; 
     // Ler o tabuleiro inteiro para validar se houve vitória ou não
     for(int linha = 0; linha < this->linhas; linha++){
         for(int coluna = 0; coluna < this->colunas; coluna++){
             
-            if(tabuleiro_[linha][coluna] == Vazio) continue;
+            if(tabuleiro_[linha][coluna] == Vazio){
+                espacosEmBranco++;
+                continue;
+            } 
 
             if(verificarHorizontal(linha, coluna, QTD_VITORIA_LIG4)){
                 return true;
@@ -84,7 +88,11 @@ bool Tabuleiro_Lig4::verificarVitoria()
             }
         }
     }
-   
+    
+    if(espacosEmBranco == 0){
+        throw runtime_error("Jogo empatado");
+    }
+
     // Se nenhuma vitória foi encontrada
     return false;
 }
