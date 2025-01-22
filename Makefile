@@ -21,7 +21,7 @@ SRC_DIR = ./src
 TESTS_DIR = ./tests
 INCLUDE_DIR = ./include
 
-CXX = g++ -std=gnu++11
+CXX = g++ -std=gnu++14
 CXX_COVERAGE = g++ -std=gnu++11 -fprofile-arcs -ftest-coverage -g
 CPPFLAGS = -I$(INCLUDE_DIR)
 CXXFLAGS = -c
@@ -95,5 +95,5 @@ $(TARGET_COVERAGE): $(SOURCES_TESTS) $(SOURCES_NO_MAIN) | clean
 	$(CXX_COVERAGE) $(CPPFLAGS) -o $@ $^
 
 clean:
-	$(RM) *.o *.exe *.gcno *.gcda *.css *.html
+	$(RM) *.o .$(SLASH)build$(SLASH)*.o .$(SLASH)build$(SLASH)tabuleiros$(SLASH)*.o .$(SLASH)build$(SLASH)menus$(SLASH)*.o *.exe *.gcno *.gcda *.css *.html
 	

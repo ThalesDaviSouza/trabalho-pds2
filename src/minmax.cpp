@@ -1,13 +1,14 @@
 #include "./../include/minmax.hpp"
 
 #include <vector>
+#include <thread>
+#include <future>
 
 MinMaxNode::MinMaxNode(Tabuleiro* tabuleiro, JogadorInGame& agente, JogadorInGame& inimigo)
 : agente(agente), inimigo(inimigo)
 { 
   Tabuleiro* tab = nullptr;
   if(dynamic_cast<Tabuleiro_JogoDaVelha*>(tabuleiro)){
-    cout << "Tabuleiro jogo da velha" << endl;
     tab = new Tabuleiro_JogoDaVelha();
   }
   else if(dynamic_cast<Tabuleiro_Lig4*>(tabuleiro)){
@@ -41,53 +42,62 @@ int MinMaxNode::getPesoJogada(int linha, int coluna, Cor corAgente){
   if(agenteAux.getTabuleiro()->verificarJogada(linha, coluna, agente.getCor())){
     try
     {
-      cout << "Tentativa fazer a jogada" << endl;
-      cout << "linha: " << linha << endl;
-      cout << "coluna: " << coluna << endl;
-      cout << "agente cor: " << agente.getCor() << endl;
       agenteAux.getTabuleiro()->fazerJogada(linha, coluna, agente.getCor());
-      agenteAux.getTabuleiro()->printTabuleiro();
+
+      // agenteAux.getTabuleiro()->printTabuleiro();
+
+      if(agenteAux.getTabuleiro()->verificarVitoria()){
+        return (agenteAux.getTabuleiro()->getCorUltimaJogada() == corAgente) ? +1 : -1;
+      }
     }
     catch(const std::exception& e)
     {
       // Empatou
-      cout << "Empatou" << endl;
       return 0;
     }
     
   }
   else{
+    cout << "movimento invalido" << endl;
+    cout << "linha: " << linha << endl;
+    cout << "coluna: " << coluna << endl;
+    cout << "Cor: " << static_cast<char>(agente.getCor()) << endl;
+    
+    agenteAux.getTabuleiro()->printTabuleiro();
+
     return 0;
   }
 
-  try{
-    if(agenteAux.getTabuleiro()->verificarVitoria()){
-      cout << "Agente ganhou: " << endl;
-      return (agenteAux.getTabuleiro()->getCorUltimaJogada() == corAgente) ? +1 : -1;
-    }
-  }
-  catch(const std::exception& e){
-    // Deu velha
-    return 0;
-  }
+  vector<pair<int, int>> jogadasPossiveis;
 
-  vector<pair<int, pair<int, int>>> jogadasPossiveis;
-
-  for(int i = 0; i < tabuleiro->getQuantidadeLinhas(); i++){
-    for(int j = 0; j < tabuleiro->getQuantidadeColunas(); j++){
-      if(tabuleiro->verificarJogada(i, j, agente.getCor())){
-        jogadasPossiveis.push_back(make_pair(0, make_pair(i, j)));
+  for(int i = 0; i < agenteAux.getTabuleiro()->getQuantidadeLinhas(); i++){
+    for(int j = 0; j < agenteAux.getTabuleiro()->getQuantidadeColunas(); j++){
+      if(agenteAux.getTabuleiro()->verificarJogada(i, j, agente.getCor())){
+        jogadasPossiveis.push_back(make_pair(i, j));
       }
     }
   }
-
-  int pesoRetorno = 0;
+  
+  vector<int> pesos;
+  bool ehTurnoDoAgente = (corAgente == agente.getCor());  
 
   for(auto& jogada : jogadasPossiveis){
-    pesoRetorno += agenteAux.getPesoJogada(jogada.second.first, jogada.second.second, corAgente);
+    pesos.push_back(agenteAux.getPesoJogada(jogada.first, jogada.second, corAgente));
   }
+
+  int pesoRetorno = pesos.front();
   
-  cout << "Peso calculado: " << pesoRetorno << endl;
+  for(auto& peso : pesos){
+    // Se for turno do agente, Maxmizing
+    if(ehTurnoDoAgente && (peso > pesoRetorno)){
+      pesoRetorno = peso;
+    }
+    // Se for turno do jogador, Minmizing
+    else if(!ehTurnoDoAgente && (peso < pesoRetorno)){
+      pesoRetorno = peso;
+    }
+  }
+
   return pesoRetorno;
 
 }
@@ -108,20 +118,43 @@ pair<int, int> MinMaxNode::melhorJogada(){
   if((int)jogadasPossiveis.size() > 0){
     
     pair<int, pair<int, int>>* melhorJogada = &jogadasPossiveis.front();
+    vector<thread> threads;
+    vector<future<int>> resultados;
+
+    int i = 0;
 
     for(auto& jogada : jogadasPossiveis){
-      jogada.first = getPesoJogada(jogada.second.first, jogada.second.second, agente.getCor());
+      promise<int> promessa;
+      resultados.push_back(promessa.get_future());
+
+      // Criar threads chamando o método da instância
+      threads.emplace_back([i, this, jogada = jogada, promessa = std::move(promessa)]() mutable {
+        int resultado = this->getPesoJogada(jogada.second.first, jogada.second.second, agente.getCor()); 
+
+        promessa.set_value(resultado); 
+      });
+      
     }
     
-    for(auto& jogada : jogadasPossiveis){
-      cout << "Peso jogada: " << jogada.first << "[" << jogada.second.first << " " << jogada.second.second << "]" << endl;
-
-      if((int)(jogada.first) > (int)(melhorJogada->first)){
-        melhorJogada = &jogada;
+    for(auto& th : threads){
+      if(th.joinable()){
+        th.join();
       }
     }
     
-    cout << "melhor Jogada: " << melhorJogada->first << endl;
+    for(int i = 0; i < resultados.size(); i++){
+      jogadasPossiveis[i].first = resultados[i].get();
+    }
+    
+    for(auto& jogada : jogadasPossiveis){
+      // cout << "Peso jogada: " << jogada.first << "[" << jogada.second.first << " " << jogada.second.second << "]" << endl;
+      if((int)(jogada.first) > (int)(melhorJogada->first)){
+        melhorJogada = &jogada;
+      }
+
+    }
+    
+    // cout << "melhor Jogada: " << melhorJogada->first << endl;
 
     return melhorJogada->second;
   }
