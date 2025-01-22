@@ -32,6 +32,10 @@ MinMaxNode::MinMaxNode(Tabuleiro* tabuleiro, JogadorInGame& agente, JogadorInGam
   this->tabuleiro = tab;
 }
 
+MinMaxNode::~MinMaxNode(){
+  delete tabuleiro;
+}
+
 Tabuleiro* MinMaxNode::getTabuleiro(){
   return tabuleiro;
 }
@@ -79,7 +83,7 @@ int MinMaxNode::getPesoJogada(int linha, int coluna, Cor corAgente){
   }
   
   vector<int> pesos;
-  bool ehTurnoDoAgente = (corAgente == agente.getCor());  
+  bool ehTurnoDoAgente = (corAgente == agente.getCor());
 
   for(auto& jogada : jogadasPossiveis){
     pesos.push_back(agenteAux.getPesoJogada(jogada.first, jogada.second, corAgente));
@@ -88,6 +92,7 @@ int MinMaxNode::getPesoJogada(int linha, int coluna, Cor corAgente){
   int pesoRetorno = pesos.front();
   
   for(auto& peso : pesos){
+    // cout << "Peso: " << peso << endl;
     // Se for turno do agente, Maxmizing
     if(ehTurnoDoAgente && (peso > pesoRetorno)){
       pesoRetorno = peso;
@@ -98,8 +103,27 @@ int MinMaxNode::getPesoJogada(int linha, int coluna, Cor corAgente){
     }
   }
 
+  // cout << "peso retorno: " << pesoRetorno << endl;
+  // cout << "Minmax: " << turnoDoAgente << endl; 
+
   return pesoRetorno;
 
+}
+
+bool MinMaxNode::vitoriaEmUmaJogada(int linha, int coluna){
+  MinMaxNode agenteAux(tabuleiro, agente, inimigo);
+  bool houveVitoria = false;
+  bool ganhadorFoiAgente = false;
+  agenteAux.getTabuleiro()->fazerJogada(linha, coluna, agente.getCor());
+
+  houveVitoria = agenteAux.getTabuleiro()->verificarVitoria();
+  ganhadorFoiAgente = agenteAux.getTabuleiro()->getCorUltimaJogada() == agente.getCor();
+
+  if(houveVitoria && ganhadorFoiAgente){
+    return true;
+  }
+
+  return false;
 }
 
 pair<int, int> MinMaxNode::melhorJogada(){  
@@ -110,6 +134,11 @@ pair<int, int> MinMaxNode::melhorJogada(){
   for(int i = 0; i < tabuleiro->getQuantidadeLinhas(); i++){
     for(int j = 0; j < tabuleiro->getQuantidadeColunas(); j++){
       if(tabuleiro->verificarJogada(i, j, agente.getCor())){
+        
+        if(vitoriaEmUmaJogada(i, j)){
+          return make_pair(i, j);
+        }
+        
         jogadasPossiveis.push_back(make_pair(0, make_pair(i, j)));
       }
     }
@@ -147,15 +176,15 @@ pair<int, int> MinMaxNode::melhorJogada(){
     }
     
     for(auto& jogada : jogadasPossiveis){
+      // TODO: remover issso
       // cout << "Peso jogada: " << jogada.first << "[" << jogada.second.first << " " << jogada.second.second << "]" << endl;
+
       if((int)(jogada.first) > (int)(melhorJogada->first)){
         melhorJogada = &jogada;
       }
 
     }
     
-    // cout << "melhor Jogada: " << melhorJogada->first << endl;
-
     return melhorJogada->second;
   }
   else{

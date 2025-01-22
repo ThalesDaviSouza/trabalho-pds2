@@ -14,9 +14,11 @@ private:
   Tabuleiro* tabuleiro;
   JogadorInGame& inimigo;
   JogadorInGame& agente;
+  bool vitoriaEmUmaJogada(int linha, int coluna);
 
 public:
   MinMaxNode(Tabuleiro* tabuleiro, JogadorInGame& agente, JogadorInGame& inimigo);
+  ~MinMaxNode();
 
   /**
    * @brief Retorna a posicao linha coluna que o agente irá jogar
