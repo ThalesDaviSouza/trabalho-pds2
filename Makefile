@@ -90,7 +90,7 @@ endif
 # Gera o relatório
 report: aviso_report $(TARGET_COVERAGE) | clean delete_folder_data_test
 	./$(TARGET_COVERAGE)
-	gcovr -r . --html --html-details -o report.html --exclude 'tests/.*'
+	gcovr -r . -j 1 --html --html-details -o report.html --exclude 'tests/.*'
 	@echo Report gerado com sucesso!
 	@echo Para conferir ele, abra o arquivo report.html
 
