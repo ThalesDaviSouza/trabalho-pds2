@@ -104,7 +104,8 @@ void GerenciadorDeJogos::JogarJogoDaVelha(){
 
     tabuleiro->printTabuleiro();
     cout << endl;
-
+    
+    jogadaValida = false;
     do{
       cout << "Digite a sua jogada (linha coluna): ";
       if((cin >> linha >> coluna)){
@@ -204,6 +205,7 @@ void GerenciadorDeJogos::JogarLig4(){
     tabuleiro->printTabuleiro();
     cout << endl;
 
+    jogadaValida = false;
     do{
       cout << "Digite a sua jogada (coluna): ";
       if((cin >> coluna)){
@@ -300,6 +302,12 @@ void GerenciadorDeJogos::JogarReversi(){
     throw length_error(msgErro);
   }
 
+  for(auto& jogador : jogadores){
+    if(jogador.getCor() != Branco && jogador.getCor() != Preto){
+      throw runtime_error("O time dos jogadores deve ser Branco (B) ou Preto (P)");
+    }
+  }
+
   tabuleiro = new Tabuleiro_Reversi();
   
   JogadorInGame jogadorAtual = jogadores.front();
@@ -316,6 +324,7 @@ void GerenciadorDeJogos::JogarReversi(){
     tabuleiro->printTabuleiro();
     cout << endl;
 
+    jogadaValida = false;
     do{
       cout << "Digite a sua jogada (linha coluna): ";
       if((cin >> linha >> coluna)){
