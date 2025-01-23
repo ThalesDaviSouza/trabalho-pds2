@@ -1,6 +1,8 @@
 #include "./../third-party/doctest.h"
 #include "./../../include/menus/menu.hpp"
 #include "./../../include/menus/menuGerenciarJogadores.hpp"
+#include "./../../include/menus/MenuGerenciarJogos.hpp"
+#include "./../../include/menus/MenuPreJogo.hpp"
 
 #include <iostream>
 #include <typeinfo>
@@ -20,8 +22,6 @@ TEST_CASE("Menu: Dada uma acao retornar falso") {
   CHECK(menu.validarAcao(nenhuma) == false);
   
 }
-
-
 
 TEST_CASE("Menu: dada uma acao retornar se ela abre o menu ou nao") {
   Menu menu(true);
@@ -43,6 +43,22 @@ TEST_SUITE("Menu: dada uma acao retornar o tipo correto de menu que deve ser abe
     Menu menu(true);
     string typeMenu = typeid(*menu.abrirMenuNovo(gerenciarJogadores)).name();
     string typeEsperado = typeid(MenuGerenciarJogadores).name();
+
+    CHECK(typeMenu == typeEsperado);
+  }
+  
+  TEST_CASE("Menu: dada a acao gerenciarJogos retornar MenuGerenciarJogos"){
+    Menu menu(true);
+    string typeMenu = typeid(*menu.abrirMenuNovo(gerenciarJogos)).name();
+    string typeEsperado = typeid(MenuGerenciarJogos).name();
+
+    CHECK(typeMenu == typeEsperado);
+  }
+
+  TEST_CASE("Menu: dada a acao iniciarJogo retornar MenuPreJogo"){
+    Menu menu(true);
+    string typeMenu = typeid(*menu.abrirMenuNovo(iniciarJogo)).name();
+    string typeEsperado = typeid(MenuPreJogo).name();
 
     CHECK(typeMenu == typeEsperado);
   }
