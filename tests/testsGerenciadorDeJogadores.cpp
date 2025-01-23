@@ -4,7 +4,7 @@
 
 TEST_SUITE("Gerenciador de Jogadores: Adicionar jogadores"){
   TEST_CASE("Gerenciador de Jogadores: dado 1 nome e 1 apelido adicionar o jogador na lista"){
-    GerenciadorDeJogadores gerenciador("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
     
     string nome1 = "TESTE PESSOA 1";
     string apelido1 = "TESTE1";
@@ -36,7 +36,7 @@ TEST_SUITE("Gerenciador de Jogadores: Adicionar jogadores"){
   }
 
   TEST_CASE("Gerenciador de Jogadores: dado 1 apelido duplicado, nao permitir adicionar"){
-    GerenciadorDeJogadores gerenciador("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
     
     string nome1 = "TESTE PESSOA 1";
     string apelido1 = "TESTE1";
@@ -54,7 +54,7 @@ TEST_SUITE("Gerenciador de Jogadores: Adicionar jogadores"){
 
 TEST_SUITE("Gerenciador de Jogadores: Validar jogadores para insercao"){
   TEST_CASE("Dado 1 apelido que nao esta na lista retornar verdadeiro"){
-    GerenciadorDeJogadores gerenciador("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
     
     string nome1 = "TESTE PESSOA 1";
     string apelido1 = "TESTE1";
@@ -66,7 +66,7 @@ TEST_SUITE("Gerenciador de Jogadores: Validar jogadores para insercao"){
   }
 
   TEST_CASE("Dado 1 apelido que ja esta em uso retornar falso"){
-    GerenciadorDeJogadores gerenciador("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
     
     string nome1 = "TESTE PESSOA 1";
     string apelido1 = "TESTE1";
@@ -79,7 +79,7 @@ TEST_SUITE("Gerenciador de Jogadores: Validar jogadores para insercao"){
 
 TEST_SUITE("Gerenciador de Jogadores: Validar remocao de jogadores"){
   TEST_CASE("Dado 1 apelido remover ele da lista"){
-    GerenciadorDeJogadores gerenciador("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
     
     string nome1 = "TESTE PESSOA 1";
     string apelido1 = "TESTE1";
@@ -112,7 +112,7 @@ TEST_SUITE("Gerenciador de Jogadores: Validar remocao de jogadores"){
   }
 
   TEST_CASE("Dado 1 apelido que nao esta na lista retornar false"){
-    GerenciadorDeJogadores gerenciador("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
     
     string nome1 = "TESTE PESSOA 1";
     string apelido1 = "TESTE1";
@@ -138,7 +138,7 @@ TEST_SUITE("Gerenciador de Jogadores: Validar remocao de jogadores"){
 
 TEST_SUITE("Gerenciador de Jogadores: Validar salvar jogadores"){
   TEST_CASE("Dado 1 jogador salvar ele no arquivo"){
-    GerenciadorDeJogadores * gerenciador = new GerenciadorDeJogadores("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    GerenciadorDeJogadores * gerenciador = new GerenciadorDeJogadores("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
     
     string nome1 = "TESTE PESSOA 1";
     string apelido1 = "TESTE1";
@@ -156,7 +156,7 @@ TEST_SUITE("Gerenciador de Jogadores: Validar salvar jogadores"){
 
     delete gerenciador;
 
-    gerenciador = new GerenciadorDeJogadores("data", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    gerenciador = new GerenciadorDeJogadores("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
 
     CHECK_FALSE(gerenciador->jogadorEhValido(apelido1));
     CHECK_FALSE(gerenciador->jogadorEhValido(apelido2));

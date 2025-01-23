@@ -22,7 +22,7 @@ TESTS_DIR = ./tests
 INCLUDE_DIR = ./include
 
 CXX = g++ -std=gnu++14
-CXX_COVERAGE = g++ -std=gnu++11 -fprofile-arcs -ftest-coverage -g
+CXX_COVERAGE = g++ -std=gnu++14 -fprofile-arcs -ftest-coverage -g
 CPPFLAGS = -I$(INCLUDE_DIR)
 CXXFLAGS = -c
 
@@ -63,7 +63,7 @@ $(BUILD_TABULEIRO):
 tests: $(TARGET_TEST)
 	./$(TARGET_TEST)
 
-$(TARGET_TEST): $(OBJECTS_TESTS) $(OBJECTS_NO_MAIN) | clean
+$(TARGET_TEST): $(OBJECTS_TESTS) $(OBJECTS_NO_MAIN) | delete_folder_data_test
 	$(CXX) -o $@ $^
 
 $(BUILD_DIR_TESTS)/%.o: $(TESTS_DIR)/%.cpp | preparar_build_tests
@@ -80,8 +80,15 @@ $(BUILD_TESTS_MENUS):
 $(BUILD_TESTS_TABULEIROS):
 	mkdir $@
 
+delete_folder_data_test:
+ifeq ($(OS),Windows_NT)
+	rd /s /q .$(SLASH)data_test
+else
+	$(RM) -r .$(SLASH)data_test
+endif
+
 # Gera o relatório
-report: aviso_report $(TARGET_COVERAGE) | clean 
+report: aviso_report $(TARGET_COVERAGE) | clean delete_folder_data_test
 	./$(TARGET_COVERAGE)
 	gcovr -r . --html --html-details -o report.html --exclude 'tests/.*'
 	@echo Report gerado com sucesso!
@@ -96,4 +103,3 @@ $(TARGET_COVERAGE): $(SOURCES_TESTS) $(SOURCES_NO_MAIN) | clean
 
 clean:
 	$(RM) *.o .$(SLASH)build$(SLASH)*.o .$(SLASH)build$(SLASH)tabuleiros$(SLASH)*.o .$(SLASH)build$(SLASH)menus$(SLASH)*.o *.exe *.gcno *.gcda *.css *.html
-	

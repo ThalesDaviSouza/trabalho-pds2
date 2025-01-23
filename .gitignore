@@ -2,6 +2,7 @@
 *.o
 /build
 /data
+/data_test
 .vscode
 
 *.html
