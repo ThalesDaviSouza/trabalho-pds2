@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['jogador_0',['Jogador',['../class_jogador.html',1,'']]],
-  ['jogadoringame_1',['JogadorInGame',['../class_jogador_in_game.html',1,'']]]
+  ['jogador_32',['Jogador',['../classJogador.html',1,'']]],
+  ['jogadoringame_33',['JogadorInGame',['../classJogadorInGame.html',1,'']]]
 ];
