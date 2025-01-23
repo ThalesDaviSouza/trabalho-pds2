@@ -1,0 +1,65 @@
+\doxysection{Menu\+Pre\+Jogo Class Reference}
+\hypertarget{class_menu_pre_jogo}{}\label{class_menu_pre_jogo}\index{MenuPreJogo@{MenuPreJogo}}
+Inheritance diagram for Menu\+Pre\+Jogo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_menu_pre_jogo}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_pre_jogo_aa098efcda1a4848d32e0f6b78612e3ee}{Menu\+Pre\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_menu}{Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_a67bd8fc6a18c1ffed32117bd130d1a46}{Menu}} (bool eh\+Menu\+Base)
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe. \end{DoxyCompactList}\item 
+void {\bfseries imprimir\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Imprime os itens do \doxylink{class_menu}{Menu} (\doxylink{class_menu_item}{Menu\+Item}). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a889c27b4635fcdcc74cd9c9469954432}{validar\+Acao}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Valida a ação é um dos itens do \doxylink{class_menu}{Menu} (\doxylink{class_menu_item}{Menu\+Item}). \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_menu_a133ff28662d9a89d2e52fe4ba926cc63}{acao\+Abre\+Menu}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Indica se o item do menu (\doxylink{class_menu_item}{Menu\+Item}) abre um \doxylink{class_menu}{Menu} novo. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_menu}{Menu}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_menu_a9f598983c0aec978d2f56ff8a20d0707}{abrir\+Menu\+Novo}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Cria um novo \doxylink{class_menu}{Menu} e retorna um ponteiro que aponta para o novo \doxylink{class_menu}{Menu}. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_menu_ac5c22fb74412115be7eccad508e17a8b}{acao\+Fecha\+Menu}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Valida se um item do menu (\doxylink{class_menu_item}{Menu\+Item}) fecha o menu atual. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_menu_aecd184a9f6228d971036b6eec117a32d}{acao\+Encerra\+Programa}} (int escolha)
+\begin{DoxyCompactList}\small\item\em Valida se o item do menu (\doxylink{class_menu_item}{Menu\+Item}) encerra o programa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_menu}{Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{class_menu_item}{Menu\+Item}} $>$ {\bfseries itens}
+\begin{DoxyCompactList}\small\item\em Lista de itens do menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_menu_pre_jogo_aa098efcda1a4848d32e0f6b78612e3ee}\index{MenuPreJogo@{MenuPreJogo}!MenuPreJogo@{MenuPreJogo}}
+\index{MenuPreJogo@{MenuPreJogo}!MenuPreJogo@{MenuPreJogo}}
+\doxysubsubsection{\texorpdfstring{MenuPreJogo()}{MenuPreJogo()}}
+{\footnotesize\ttfamily \label{class_menu_pre_jogo_aa098efcda1a4848d32e0f6b78612e3ee} 
+Menu\+Pre\+Jogo\+::\+Menu\+Pre\+Jogo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construtor padrão da classe. 
+
+Define os itens de menu (\doxylink{class_menu_item}{Menu\+Item}) que esse menu possui.
+
+Itens do \doxylink{class_menu}{Menu}\+:
+
+Jogar Jogo da Velha.
+
+Jogar Reversi.
+
+Jogar Lig4.
+
+Voltar ao menu anterior. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/menus/menu\+Pre\+Jogo.\+hpp\item 
+src/menus/menu\+Pre\+Jogo.\+cpp\end{DoxyCompactItemize}

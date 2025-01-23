@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "./../../include/tabuleiros/tabuleiro.hpp"
 
 using namespace std;
@@ -14,10 +15,16 @@ Tabuleiro::Tabuleiro(int colunas_, int linhas_)
 
 void Tabuleiro::printTabuleiro()
 {
+    cout << "   ";
+    for(int i = 1; i <= this->colunas; i++){
+        cout << " " << i << "  ";
+    }
+    cout << endl;
+
     for (int i = 0; i < this->linhas; i++)
     {
-
-        cout << "| ";
+        cout << (i+1);
+        cout << " | ";
         for (int j = 0; j < this->colunas; j++)
         {
             cout << static_cast<char>(tabuleiro_[i][j]) << " | ";
@@ -40,7 +47,7 @@ bool Tabuleiro::verificarJogada(int x, int y, Cor cor)
     }
     
     // verificar se o espaço está disponível
-    if (x != Vazio || y != Vazio)
+    if (tabuleiro_[x][y] != Vazio)
     {
         return false;
     }
@@ -182,4 +189,23 @@ bool Tabuleiro::verificarDiagonalCima(int linha, int coluna, int quantParaVitori
         return true;
     return false;
 
+}
+
+Cor Tabuleiro::getCorUltimaJogada(){
+    return this->corUltimaJogada;
+}
+
+int Tabuleiro::getQuantidadeLinhas(){
+  return linhas;
+}
+
+int Tabuleiro::getQuantidadeColunas(){
+  return colunas;
+}
+
+vector<vector<Cor>> Tabuleiro::getTabuleiro(){
+  return tabuleiro_;
+}
+vector<vector<Cor>>& Tabuleiro::getTabuleiroRef(){
+  return tabuleiro_;
 }

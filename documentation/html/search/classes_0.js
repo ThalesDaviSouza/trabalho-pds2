@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gerenciadordejogadores_31',['GerenciadorDeJogadores',['../classGerenciadorDeJogadores.html',1,'']]]
+  ['gerenciadordejogadores_0',['GerenciadorDeJogadores',['../class_gerenciador_de_jogadores.html',1,'']]],
+  ['gerenciadordejogos_1',['GerenciadorDeJogos',['../class_gerenciador_de_jogos.html',1,'']]]
 ];

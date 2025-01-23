@@ -10,6 +10,7 @@
 #define COLUNAS_LIG4 7
 #define LINHAS_LIG4 6
 #define QTD_VITORIA_LIG4 4
+#define QTD_JOGADORES_LIG4 2
 
 /**
  * @brief Definições do tamanho máximo do tabuleiro de Joga da Velha e a contagem necessária de peças para vitória.
@@ -17,9 +18,11 @@
 #define COLUNAS_VELHA 3
 #define LINHAS_VELHA 3
 #define QTD_VITORIA_VELHA 3
+#define QTD_JOGADORES_VELHA 2
 
 #define COLUNAS_REVERSI 8
 #define LINHAS_REVERSI 8
+#define QTD_JOGADORES_REVERSI 2
 
 using namespace std;
 
@@ -151,6 +154,13 @@ public:
      * @brief Método que permite acessar o atributo 'ColunaUltimaJogada' da classe 'Tabuleiro'.
      */
     int getColunaUltimaJogada();
+    Cor getCorUltimaJogada();
+
+    int getQuantidadeLinhas();
+    int getQuantidadeColunas();
+
+    vector<vector<Cor>> getTabuleiro();
+    vector<vector<Cor>>& getTabuleiroRef();
 };
 
 /**
@@ -288,6 +298,7 @@ class Tabuleiro_Reversi : public Tabuleiro{
      bool verificarJogada(int linha, int coluna, Cor cor) override;
      void fazerJogada(int linha, int coluna, Cor cor) override;
      bool verificarVitoria() override;
+
 };
 
 #endif

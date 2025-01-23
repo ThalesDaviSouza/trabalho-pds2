@@ -3,7 +3,7 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b}{Gerenciador\+De\+Jogadores}} (string caminho\+Pasta, string nome\+Arquivo)
+\mbox{\hyperlink{class_gerenciador_de_jogadores_ac3379ceae5ca2604744303a32972d47a}{Gerenciador\+De\+Jogadores}} (string caminho\+Pasta, string nome\+Arquivo\+Jogadores, string nome\+Arquivo\+Partidas)
 \begin{DoxyCompactList}\small\item\em Construtor padrão da classe. \end{DoxyCompactList}\item 
 \Hypertarget{class_gerenciador_de_jogadores_a2c0a4e893fbd64f2291901aaf84a0c89}\label{class_gerenciador_de_jogadores_a2c0a4e893fbd64f2291901aaf84a0c89} 
 void {\bfseries exibir\+Jogadores} ()
@@ -16,15 +16,30 @@ bool \mbox{\hyperlink{class_gerenciador_de_jogadores_add4292c8b1a8030b038e894aed
 \begin{DoxyCompactList}\small\item\em Verifica se um apelido de \doxylink{class_jogador}{Jogador} é válido. \end{DoxyCompactList}\item 
 \Hypertarget{class_gerenciador_de_jogadores_a470f3233c7ecbf90206bd8061f60c18f}\label{class_gerenciador_de_jogadores_a470f3233c7ecbf90206bd8061f60c18f} 
 bool {\bfseries salvar\+Jogadores} ()
-\begin{DoxyCompactList}\small\item\em Salva todos os Jogadores carregados na lista no arquivo de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Salva todos os Jogadores carregados na lista no arquivo de dados. \end{DoxyCompactList}\item 
+\Hypertarget{class_gerenciador_de_jogadores_a588f9ca808fb36b2df7650d1c5bfa0ef}\label{class_gerenciador_de_jogadores_a588f9ca808fb36b2df7650d1c5bfa0ef} 
+\mbox{\hyperlink{class_jogador}{Jogador}} {\bfseries buscar\+Jogador} (string apelido)
+\item 
+\Hypertarget{class_gerenciador_de_jogadores_a86b4b44828424c19483fb1b05247f6fb}\label{class_gerenciador_de_jogadores_a86b4b44828424c19483fb1b05247f6fb} 
+void {\bfseries adicionar\+Registro\+De\+Partida} (string apelido, Jogo jogo, bool ganhou, int pontuacao)
+\begin{DoxyCompactList}\small\item\em Adiciona o registro para quando o jogo possui pontuacao. \end{DoxyCompactList}\item 
+\Hypertarget{class_gerenciador_de_jogadores_ac1a9b2c6e54bb83e2f44269de2c66960}\label{class_gerenciador_de_jogadores_ac1a9b2c6e54bb83e2f44269de2c66960} 
+void {\bfseries adicionar\+Registro\+De\+Partida} (string apelido, Jogo jogo, bool ganhou)
+\item 
+\Hypertarget{class_gerenciador_de_jogadores_a5871a367feaa856cd5b228b583d71c1d}\label{class_gerenciador_de_jogadores_a5871a367feaa856cd5b228b583d71c1d} 
+vector$<$ \mbox{\hyperlink{class_registro_partida}{Registro\+Partida}} $>$ {\bfseries get\+Registros\+De\+Partida} (string apelido)
+\item 
+\Hypertarget{class_gerenciador_de_jogadores_ade62d32ff0344276d24e2fc3cc948f9d}\label{class_gerenciador_de_jogadores_ade62d32ff0344276d24e2fc3cc948f9d} 
+bool {\bfseries salvar\+Partidas} ()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b}\index{GerenciadorDeJogadores@{GerenciadorDeJogadores}!GerenciadorDeJogadores@{GerenciadorDeJogadores}}
+\Hypertarget{class_gerenciador_de_jogadores_ac3379ceae5ca2604744303a32972d47a}\index{GerenciadorDeJogadores@{GerenciadorDeJogadores}!GerenciadorDeJogadores@{GerenciadorDeJogadores}}
 \index{GerenciadorDeJogadores@{GerenciadorDeJogadores}!GerenciadorDeJogadores@{GerenciadorDeJogadores}}
 \doxysubsubsection{\texorpdfstring{GerenciadorDeJogadores()}{GerenciadorDeJogadores()}}
-{\footnotesize\ttfamily \label{class_gerenciador_de_jogadores_a5967cf576ab4413d08e588e4d28d826b} 
-Gerenciador\+De\+Jogadores\+::\+Gerenciador\+De\+Jogadores (\begin{DoxyParamCaption}\item[{string}]{caminho\+Pasta}{, }\item[{string}]{nome\+Arquivo}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_gerenciador_de_jogadores_ac3379ceae5ca2604744303a32972d47a} 
+Gerenciador\+De\+Jogadores\+::\+Gerenciador\+De\+Jogadores (\begin{DoxyParamCaption}\item[{string}]{caminho\+Pasta}{, }\item[{string}]{nome\+Arquivo\+Jogadores}{, }\item[{string}]{nome\+Arquivo\+Partidas}{}\end{DoxyParamCaption})}
 
 
 

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <map>
 #include "./../../include/tabuleiros/tabuleiro.hpp"
 
 using namespace std;
@@ -350,42 +349,4 @@ bool Tabuleiro_Reversi::verificarVitoria(){
   }
 
   return true;
-}
-
-pair<Cor, int> Tabuleiro_Reversi::retornarGanhador()
-{
-  map<Cor, int> quantidadePecas;
-  Cor corAtual = Vazio;
-
-  for(int i = 0; i < linhas; i++){
-    for(int j = 0; j < colunas; j++){
-      corAtual = tabuleiro_[i][j];
-
-      if(corAtual != Vazio){
-        // Se já existir no map
-        if(quantidadePecas.find(corAtual) != quantidadePecas.end()){
-          quantidadePecas[corAtual]++;
-        }
-        else{
-          quantidadePecas.insert(make_pair(corAtual, 1));
-        }
-      }
-    }
-  }
-
-  int aux = 0;
-  pair<Cor, int> maioQuantidade;
-
-  for(auto& par : quantidadePecas){
-    if(aux == 0 || par.second > maioQuantidade.second){
-      maioQuantidade.first = par.first;
-      maioQuantidade.second = par.second;
-
-      if(aux == 0){
-        aux++;
-      }
-    }
-  }
-
-  return maioQuantidade;
 }

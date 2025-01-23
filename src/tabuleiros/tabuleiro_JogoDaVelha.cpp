@@ -27,11 +27,15 @@ void Tabuleiro_JogoDaVelha::fazerJogada(int linha, int coluna, Cor cor) {
 
 bool Tabuleiro_JogoDaVelha::verificarVitoria()
 {
+  int countVazios = 0;
   // Ler o tabuleiro inteiro para validar se houve vitória ou não
     for(int linha = 0; linha < this->linhas; linha++){
       for(int coluna = 0; coluna < this->colunas; coluna++){
         
-        if(tabuleiro_[linha][coluna] == Vazio) continue;
+        if(tabuleiro_[linha][coluna] == Vazio){
+          countVazios++;
+          continue;
+        }
 
         if(verificarHorizontal(linha, coluna, QTD_VITORIA_VELHA)){
           return true;
@@ -47,7 +51,10 @@ bool Tabuleiro_JogoDaVelha::verificarVitoria()
         }
       }
     }
-   
+
+    if(countVazios == 0){
+      throw runtime_error("Deu velha");
+    }
     // Se nenhuma vitória foi encontrada
     return false;
 }
