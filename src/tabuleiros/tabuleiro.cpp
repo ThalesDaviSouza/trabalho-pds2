@@ -38,35 +38,6 @@ bool foraDoLimite(int x, int max)
     return (x < 0 || x >= max);
 }
 
-bool Tabuleiro::verificarJogada(int x, int y, Cor cor)
-{
-    // verificar se jogada está nos limites do tabuleiro
-    if (foraDoLimite(x, this->linhas) || foraDoLimite(y, this->colunas))
-    {
-        return false;
-    }
-    
-    // verificar se o espaço está disponível
-    if (tabuleiro_[x][y] != Vazio)
-    {
-        return false;
-    }
-
-    // jogada permitida
-    return true;
-};
-
-void Tabuleiro::fazerJogada(int linha, int coluna, Cor cor)
-{
-    if (verificarJogada(linha, coluna, cor))
-    {
-        tabuleiro_[linha][coluna] = cor;
-    }
-
-    linhaUltimaJogada = linha;
-    colunaUltimaJogada = coluna;
-}
-
 int Tabuleiro::getLinhaUltimaJogada(){
     return this->linhaUltimaJogada;
 }
@@ -96,11 +67,7 @@ bool Tabuleiro::verificarHorizontal(int linha, int coluna, int quantParaVitoria)
         }
     }
 
-    if (contador >= quantParaVitoria)
-        return true;
-    
-    return false;
-
+    return true;
 }
 
 //Verificar vertical para baixo
@@ -123,10 +90,8 @@ bool Tabuleiro::verificarBaixo(int linha, int coluna, int quantParaVitoria){
             return false;
         }
     }
-    if (contador >= quantParaVitoria)
-        return true;
-    return false;
 
+    return true;
 }
 
 bool Tabuleiro::posicaoEhValida(int linha, int coluna){
@@ -156,10 +121,7 @@ bool Tabuleiro::verificarDiagonalBaixo(int linha, int coluna, int quantParaVitor
         }
     }
 
-    if (contador >= quantParaVitoria)
-        return true;
-    return false;
-
+    return true;
 }
 
 //Verificar diagonal secundária (/) para cima e direita
@@ -185,10 +147,7 @@ bool Tabuleiro::verificarDiagonalCima(int linha, int coluna, int quantParaVitori
         }
     }
 
-    if (contador >= quantParaVitoria)
-        return true;
-    return false;
-
+    return true;
 }
 
 Cor Tabuleiro::getCorUltimaJogada(){

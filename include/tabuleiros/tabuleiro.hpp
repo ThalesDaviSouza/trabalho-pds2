@@ -122,7 +122,7 @@ public:
      *
      * @return True se a jogada é válida. False caso contrário.
      */
-    virtual bool verificarJogada(int linha, int coluna, Cor cor);
+    virtual bool verificarJogada(int linha, int coluna, Cor cor) = 0;
 
     /**
      * @brief Caso a função 'verificarJogada' retornar true, essa função é responsável por fazer a jogada.

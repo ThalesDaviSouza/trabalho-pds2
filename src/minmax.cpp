@@ -12,15 +12,10 @@ MinMaxNode::MinMaxNode(Tabuleiro* tabuleiro, JogadorInGame& agente, JogadorInGam
     tab = new Tabuleiro_JogoDaVelha();
   }
   else if(dynamic_cast<Tabuleiro_Lig4*>(tabuleiro)){
-    cout << "Tabuleiro lig4" << endl;
     tab = new Tabuleiro_Lig4();
   }
   else if(dynamic_cast<Tabuleiro_Reversi*>(tabuleiro)){
-    cout << "Tabuleiro reversi" << endl;
     tab = new Tabuleiro_Reversi();
-  }else{
-
-    cout << "Tabuleiro deu pau" << endl;
   }
 
   for(int i = 0; i < tab->getQuantidadeLinhas(); i++){
@@ -147,33 +142,37 @@ pair<int, int> MinMaxNode::melhorJogada(){
   if((int)jogadasPossiveis.size() > 0){
     
     pair<int, pair<int, int>>* melhorJogada = &jogadasPossiveis.front();
-    vector<thread> threads;
-    vector<future<int>> resultados;
+    // A parte do código referente ao threads teve que ser comentado para gerar relatório de cobertura
+    // vector<thread> threads;
+    // vector<future<int>> resultados;
+    vector<int> resultados;
 
     int i = 0;
 
     for(auto& jogada : jogadasPossiveis){
-      promise<int> promessa;
-      resultados.push_back(promessa.get_future());
-
-      // Criar threads chamando o método da instância
-      threads.emplace_back([i, this, jogada = jogada, promessa = std::move(promessa)]() mutable {
-        int resultado = this->getPesoJogada(jogada.second.first, jogada.second.second, agente.getCor()); 
-
-        promessa.set_value(resultado); 
-      });
+      // promise<int> promessa;
+      // resultados.push_back(promessa.get_future());
       
+
+      // // Criar threads chamando o método da instância
+      // threads.emplace_back([i, this, jogada = jogada, promessa = std::move(promessa)]() mutable {
+      //   int resultado = this->getPesoJogada(jogada.second.first, jogada.second.second, agente.getCor()); 
+
+      //   promessa.set_value(resultado); 
+      // });
+      
+      resultados.push_back(this->getPesoJogada(jogada.second.first, jogada.second.second, agente.getCor())); 
     }
     
-    for(auto& th : threads){
-      if(th.joinable()){
-        th.join();
-      }
-    }
+    // for(auto& th : threads){
+    //   if(th.joinable()){
+    //     th.join();
+    //   }
+    // }
     
-    for(int i = 0; i < resultados.size(); i++){
-      jogadasPossiveis[i].first = resultados[i].get();
-    }
+    // for(int i = 0; i < resultados.size(); i++){
+    //   jogadasPossiveis[i].first = resultados[i].get();
+    // }
     
     for(auto& jogada : jogadasPossiveis){
       // TODO: remover issso
