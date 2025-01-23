@@ -72,6 +72,7 @@ public:
   vector<RegistroPartida>  getRegistrosDePartida(string apelido);
 
   bool salvarPartidas();
+  void clearRegistrosPartidas();
 
 };
 

@@ -266,5 +266,9 @@ vector<RegistroPartida> GerenciadorDeJogadores::getRegistrosDePartida(string ape
   }
 
   return registros;
-
 }
+
+void GerenciadorDeJogadores::clearRegistrosPartidas(){
+  registroPartidas.clear();
+}
+

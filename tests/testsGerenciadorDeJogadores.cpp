@@ -1,4 +1,8 @@
 #include "./third-party/doctest.h"
+#include <iostream>
+#include <sstream>
+#include <memory>
+
 #include "./../include/gerenciadorDeJogadores.hpp"
 
 
@@ -166,5 +170,105 @@ TEST_SUITE("Gerenciador de Jogadores: Validar salvar jogadores"){
     gerenciador->salvarJogadores();
     
     delete gerenciador;
+  }
+}
+
+TEST_SUITE("GerenciadorDeJogadores::buscarJogador"){
+  TEST_CASE("Dado um apelido achar um jogador"){
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    
+    string nome = "TESTE PESSOA 1";
+    string apelido = "TESTE1";
+
+    gerenciador.adicionarJogador(nome, apelido);
+
+    Jogador buscado = gerenciador.buscarJogador(apelido);
+
+    CHECK(buscado.getApelido().compare(apelido) == 0);
+    CHECK(buscado.getNome().compare(nome) == 0);
+
+  }
+
+  TEST_CASE("Dado um apelido que nao foi adicionado lancar exceção"){
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");
+    string apelido = "TESTE1";
+
+    CHECK_THROWS_AS(gerenciador.buscarJogador(apelido), std::out_of_range);
+
+  }
+}
+
+TEST_CASE("GerenciadorDeJogadores::adicionarRegistroDePartida: dado um registro valido salvar ele"){
+  shared_ptr<GerenciadorDeJogadores> gerenciador(new GerenciadorDeJogadores("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt"));
+  string nome = "TESTE PESSOA 1";
+  string apelido = "TESTE1";
+  Jogo jogo1 = reversi;
+  string nome2 = "TESTE PESSOA 2";
+  string apelido2 = "TESTE2";
+  Jogo jogo2 = jogoDaVelha;
+
+  gerenciador.get()->adicionarJogador(nome, apelido);
+  gerenciador.get()->adicionarJogador(nome2, apelido2);
+  gerenciador.get()->adicionarRegistroDePartida(apelido, jogo1, true, 10);
+  gerenciador.get()->adicionarRegistroDePartida(apelido2, jogo2, true);
+
+  gerenciador.get()->salvarJogadores();
+  gerenciador.get()->salvarPartidas();
+
+  gerenciador.reset(new GerenciadorDeJogadores("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt"));
+
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido).size() == 1);
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido).front().getApelidoJogador().compare(apelido) == 0);
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido).front().getGanhou());
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido).front().getJogo() == jogo1);
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido).front().getPontuacao() == 10);
+
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido2).size() == 1);
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido2).front().getApelidoJogador().compare(apelido2) == 0);
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido2).front().getGanhou());
+  CHECK(gerenciador.get()->getRegistrosDePartida(apelido2).front().getJogo() == jogo2);
+
+  gerenciador.get()->removerJogador(apelido);
+  gerenciador.get()->removerJogador(apelido2);
+  gerenciador.get()->clearRegistrosPartidas();
+
+  gerenciador.get()->salvarJogadores();
+  gerenciador.get()->salvarPartidas();
+
+}
+
+TEST_SUITE("GerenciadorDeJogadores::exibirJogadores: ")
+{
+  TEST_CASE("Dado um jogador valida ser a impressao dele foi correta"){
+    ostringstream buffer;
+    // Redireciona `cout` para o buffer
+    streambuf* original = cout.rdbuf(buffer.rdbuf());  
+
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");  
+    string nome = "TESTE PESSOA 1";
+    string apelido = "TESTE1";
+
+    gerenciador.adicionarJogador(nome, apelido);
+    gerenciador.exibirJogadores();
+    
+    // Restaura o buffer original de `cout`
+    cout.rdbuf(original);  
+    
+    CHECK(buffer.str() == "TESTE PESSOA 1 - [TESTE1]\nREVERSI - V: 0 D: 0\nLIG4 - V: 0 D: 0\nVELHA - V: 0 D: 0\n\n");
+  }
+
+  TEST_CASE("Dado que nao tem jogadores validar se a impressao informa isso"){
+    ostringstream buffer;
+    // Redireciona `cout` para o buffer
+    streambuf* original = cout.rdbuf(buffer.rdbuf());  
+
+    GerenciadorDeJogadores gerenciador("data_test", "dados_jogadores_test.txt", "dados_partidas_test.txt");  
+  
+    gerenciador.exibirJogadores();
+    
+    // Restaura o buffer original de `cout`
+    cout.rdbuf(original);  
+    
+    CHECK(buffer.str() == "Nenhum jogador adicionado ainda\n");
   }
 }
