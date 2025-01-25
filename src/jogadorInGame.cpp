@@ -7,3 +7,7 @@ Jogador JogadorInGame::getJogador(){
 Cor JogadorInGame::getCor(){
   return this->cor;
 }
+
+void JogadorInGame::setCor(Cor cor){
+  this->cor = cor;
+}

@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 #ifdef _WIN32
 #include <direct.h>
 #else
@@ -272,3 +273,12 @@ void GerenciadorDeJogadores::clearRegistrosPartidas(){
   registroPartidas.clear();
 }
 
+void GerenciadorDeJogadores::exibirJogadoresResumido(){
+  for(int i = 0; i < (int)jogadores.size(); i++){
+    cout << "...[" << i << "] - " << jogadores.at(i).getNome() << " (" << jogadores.at(i).getApelido() << ")" << endl;
+  }
+}
+
+Jogador& GerenciadorDeJogadores::buscarJogadorPorPosicao(int posicaoJogador){
+  return jogadores.at(posicaoJogador);
+}

@@ -27,6 +27,7 @@ public:
    * @brief Retorna a cor que o Jogador selecionou.
    */
   Cor getCor();
+  void setCor(Cor cor);
 };
 
 #endif

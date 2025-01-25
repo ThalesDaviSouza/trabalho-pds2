@@ -14,7 +14,7 @@
 MenuGerenciarJogos::MenuGerenciarJogos()
 : Menu(false) 
 {
-  this->itens.push_back(MenuItem(adicionarJogadorPartida, "Adicionar Jogador na Partida", false));
+  this->itens.push_back(MenuItem(adicionarJogadorPartida, "Adicionar/editar Jogadores na Partida", false));
   this->itens.push_back(MenuItem(listarJogadoresPartida, "Listar Jogadores na Partida", false));
   this->itens.push_back(MenuItem(listarJogadoresCadastrados, "Listar Jogadores cadastrados", false));
   this->itens.push_back(MenuItem(iniciarJogo, "Iniciar o jogo", true));

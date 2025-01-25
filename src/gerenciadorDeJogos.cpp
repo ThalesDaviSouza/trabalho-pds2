@@ -3,6 +3,7 @@
 #include "./../include/jogadorInGame.hpp"
 #include "./../include/minmax.hpp"
 #include "./../shared/Utils.hpp"
+#include "./../Enums/MenuOptions.cpp"
 
 #include <iostream>
 #include <map>
@@ -36,36 +37,130 @@ void GerenciadorDeJogos::imprimirJogadores(){
   }
 }
 
+void GerenciadorDeJogos::removerJogadorPartida(string apelido){
+  int aux = 0;
+
+  for(auto& jogador : jogadores){
+    if(jogador.getJogador().getApelido().compare(apelido) == 0){
+      jogadores.erase(jogadores.begin()+aux);
+      break;
+    }
+    ++aux;
+  }
+}
+
+Cor GerenciadorDeJogos::solicitarCorJogador(string mensagemSelecao){
+  bool corValida = false;
+  char aux;
+  Cor cor;
+  do{
+    imprimirCores();
+    cout << endl;
+    cout << mensagemSelecao;
+
+    if(cin >> aux){
+      cor = static_cast<Cor>(aux);
+
+      corValida = true;
+      
+      for(auto& jog : jogadores){
+        if(jog.getCor() == cor){
+          cout << "O time escolhido ja esta em jogo" << endl;
+          corValida = false;
+          break;
+        }
+      }
+    }
+    else{
+      cout << "Houve um erro na leitura" << endl;
+      clearBuffer();
+    }
+  }while(!corValida);
+
+  return cor;
+}
+
 void GerenciadorDeJogos::selecionarJogador(){
-  string apelido;
+  int posJogador = 0;
+  Jogador* jogador;
+  bool editar = false;
+  int escolha;
+  bool escolhaValida = false;
   Cor cor;
   char aux;
+  bool corValida = false;
 
-  cout << "Digite o apelido do jogador: ";
-  cin >> apelido;
-  clearBuffer();
+  do{
+    cout << "Jogadores salvos: " << endl;
+    gerenciadorDeJogadores.exibirJogadoresResumido();
+    cout << "...[" << voltar << "] - Terminar selecao" << endl;
+    cout << endl;
 
-  Jogador jog = gerenciadorDeJogadores.buscarJogador(apelido);
+    cout << "Insira o numero do jogador: ";
+    if(cin >> posJogador){
+      if(posJogador == voltar){
+        continue;
+      }
+      
+      jogador = &gerenciadorDeJogadores.buscarJogadorPorPosicao(posJogador);
+      
+      editar = false;
+      for(auto& jog : jogadores){
+        if(jog.getJogador().getApelido().compare(jogador->getApelido()) == 0){
+          editar = true;
+          break;
+        }
+      }
 
-  for(auto& jogador : jogadores){
-    if(jogador.getJogador().getApelido().compare(jog.getApelido()) == 0){
-      throw invalid_argument("Jogador ja esta em jogo");
+      if(editar){
+        escolhaValida = false;
+        while (!escolhaValida)
+        {      
+          cout << "jogador " << jogador->getNome() << " ja esta em jogo" << endl;
+          cout << "...[1] - Remover jogador" << endl;
+          cout << "...[2] - Alterar cor do jogador" << endl;
+
+          if(cin >> escolha){
+            if(escolha == 1){
+              escolhaValida = true;  
+              removerJogadorPartida(jogador->getApelido());
+            }
+            else if(escolha == 2){
+              escolhaValida = true;  
+
+              cor = solicitarCorJogador("Insira o codigo do novo time do jogador: ");
+              
+              for(auto& jog : jogadores){
+                if(jog.getJogador().getApelido().compare(jogador->getApelido()) == 0){
+                  jog.setCor(cor);
+                  break;
+                }
+              }
+            }
+            else{
+              cout << "Houve um erro: opcao invalida" << endl;
+            }
+          }
+          else{
+            cout << "Houve um erro: falha na leitura" << endl;
+            clearBuffer();
+          }
+        }
+      }
+      else{
+        cor = solicitarCorJogador("Insira o codigo do time do jogador: ");
+        if(cor != Vazio){
+          JogadorInGame jogadorInGame(*jogador, cor);
+          jogadores.push_back(jogadorInGame);
+        }
+      }
     }
-  }
-
-  cout << "Escolha a cor: ";
-  cin >> aux;
-  cor = static_cast<Cor>(aux);
-
-  for(auto& jogador : jogadores){
-    if(jogador.getCor() == cor){
-      throw invalid_argument("O time escolhido ja esta em jogo");
+    else{
+      cout << "Houve um erro na leitura" << endl;
+      clearBuffer();
     }
-  }
-
-  JogadorInGame jogador(jog, cor);
-
-  jogadores.push_back(jogador);
+    
+  }while(posJogador != voltar);
 
 }
 

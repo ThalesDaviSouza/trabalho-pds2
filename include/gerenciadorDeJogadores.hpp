@@ -62,6 +62,7 @@ public:
   bool salvarJogadores();
 
   Jogador buscarJogador(string apelido);
+  Jogador& buscarJogadorPorPosicao(int posicaoJogador);
   
   /**
    * @brief Adiciona o registro para quando o jogo possui pontuacao
@@ -73,6 +74,7 @@ public:
 
   bool salvarPartidas();
   void clearRegistrosPartidas();
+  void exibirJogadoresResumido();
 
 };
 

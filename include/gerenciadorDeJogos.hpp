@@ -15,6 +15,7 @@ private:
   Tabuleiro* tabuleiro;
   vector<JogadorInGame> jogadores;
   GerenciadorDeJogadores& gerenciadorDeJogadores;
+  Cor solicitarCorJogador(string mensagemSelecao);
 
 public:
   GerenciadorDeJogos(GerenciadorDeJogadores& gerenciadorDeJogadores);
@@ -27,6 +28,7 @@ public:
   void selecionarJogador();
   void removerTodosJogadores();
   int getQuantidadeJogadores();
+  void removerJogadorPartida(string apelido);
 
 };
 
