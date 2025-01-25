@@ -99,7 +99,7 @@ int MinMaxNode::getPesoJogada(int linha, int coluna, Cor corAgente){
   }
 
   // cout << "peso retorno: " << pesoRetorno << endl;
-  // cout << "Minmax: " << turnoDoAgente << endl; 
+  // cout << "Eh turno do agente?: " << ehTurnoDoAgente << endl; 
 
   return pesoRetorno;
 
@@ -145,7 +145,7 @@ pair<int, int> MinMaxNode::melhorJogada(){
     // A parte do código referente ao threads teve que ser comentado para gerar relatório de cobertura
     // vector<thread> threads;
     // vector<future<int>> resultados;
-    vector<int> resultados;
+    // vector<int> resultados;
 
     int i = 0;
 
@@ -161,7 +161,7 @@ pair<int, int> MinMaxNode::melhorJogada(){
       //   promessa.set_value(resultado); 
       // });
       
-      resultados.push_back(this->getPesoJogada(jogada.second.first, jogada.second.second, agente.getCor())); 
+      jogada.first = (this->getPesoJogada(jogada.second.first, jogada.second.second, agente.getCor())); 
     }
     
     // for(auto& th : threads){
@@ -176,7 +176,7 @@ pair<int, int> MinMaxNode::melhorJogada(){
     
     for(auto& jogada : jogadasPossiveis){
       // TODO: remover issso
-      // cout << "Peso jogada: " << jogada.first << "[" << jogada.second.first << " " << jogada.second.second << "]" << endl;
+      cout << "Peso jogada: " << jogada.first << "[" << jogada.second.first << " " << jogada.second.second << "]" << endl;
 
       if((int)(jogada.first) > (int)(melhorJogada->first)){
         melhorJogada = &jogada;
