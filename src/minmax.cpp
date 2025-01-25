@@ -176,7 +176,7 @@ pair<int, int> MinMaxNode::melhorJogada(){
     
     for(auto& jogada : jogadasPossiveis){
       // TODO: remover issso
-      cout << "Peso jogada: " << jogada.first << "[" << jogada.second.first << " " << jogada.second.second << "]" << endl;
+      // cout << "Peso jogada: " << jogada.first << "[" << jogada.second.first << " " << jogada.second.second << "]" << endl;
 
       if((int)(jogada.first) > (int)(melhorJogada->first)){
         melhorJogada = &jogada;
