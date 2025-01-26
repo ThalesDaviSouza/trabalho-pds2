@@ -15,12 +15,12 @@ private:
   Tabuleiro* tabuleiro;
   vector<JogadorInGame> jogadores;
   GerenciadorDeJogadores& gerenciadorDeJogadores;
-  Cor solicitarCorJogador(string mensagemSelecao);
 
 public:
   GerenciadorDeJogos(GerenciadorDeJogadores& gerenciadorDeJogadores);
   ~GerenciadorDeJogos();
   
+  Cor solicitarCorJogador(string mensagemSelecao);
   void JogarJogoDaVelha();
   void JogarLig4();
   void JogarReversi();
@@ -29,6 +29,7 @@ public:
   void removerTodosJogadores();
   int getQuantidadeJogadores();
   void removerJogadorPartida(string apelido);
+  void adicionarJogador(Jogador& jogador, Cor cor);
 
 };
 

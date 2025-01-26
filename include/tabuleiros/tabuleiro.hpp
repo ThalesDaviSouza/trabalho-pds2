@@ -295,8 +295,18 @@ public:
 class Tabuleiro_Reversi : public Tabuleiro{ 
     private:
      bool formaLinhaVertical(int linha, int coluna, Cor cor);
+     bool formaLinhaVerticalSuperior(int linha, int coluna, Cor cor);
+     bool formaLinhaVerticalInferior(int linha, int coluna, Cor cor);
+     
      bool formaLinhaHorizontal(int linha, int coluna, Cor cor);
+     bool formaLinhaHorizontalEsquerda(int linha, int coluna, Cor cor);
+     bool formaLinhaHorizontalDireita(int linha, int coluna, Cor cor);
+
      bool formaLinhaDiagonal(int linha, int coluna, Cor cor);
+     bool formaLinhaDiagonalDireitaSuperior(int linha, int coluna, Cor cor);
+     bool formaLinhaDiagonalDireitaInferior(int linha, int coluna, Cor cor);
+     bool formaLinhaDiagonalEsquerdaSuperior(int linha, int coluna, Cor cor);
+     bool formaLinhaDiagonalEsquerdaInferior(int linha, int coluna, Cor cor);
 
     public:
      Tabuleiro_Reversi();

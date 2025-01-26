@@ -59,15 +59,15 @@ Cor GerenciadorDeJogos::solicitarCorJogador(string mensagemSelecao){
     cout << mensagemSelecao;
 
     if(cin >> aux){
-      cor = static_cast<Cor>(aux);
-
-      corValida = true;
-      
-      for(auto& jog : jogadores){
-        if(jog.getCor() == cor){
-          cout << "O time escolhido ja esta em jogo" << endl;
-          corValida = false;
-          break;
+      if(cor = static_cast<Cor>(aux)){
+        corValida = true;
+        
+        for(auto& jog : jogadores){
+          if(jog.getCor() == cor){
+            cout << "O time escolhido ja esta em jogo" << endl;
+            corValida = false;
+            break;
+          }
         }
       }
     }
@@ -78,6 +78,11 @@ Cor GerenciadorDeJogos::solicitarCorJogador(string mensagemSelecao){
   }while(!corValida);
 
   return cor;
+}
+
+void GerenciadorDeJogos::adicionarJogador(Jogador& jogador, Cor cor){
+  JogadorInGame jogadorInGame(jogador, cor);
+  jogadores.push_back(jogadorInGame);
 }
 
 void GerenciadorDeJogos::selecionarJogador(){
@@ -150,8 +155,7 @@ void GerenciadorDeJogos::selecionarJogador(){
       else{
         cor = solicitarCorJogador("Insira o codigo do time do jogador: ");
         if(cor != Vazio){
-          JogadorInGame jogadorInGame(*jogador, cor);
-          jogadores.push_back(jogadorInGame);
+          adicionarJogador(*jogador, cor);
         }
       }
     }
