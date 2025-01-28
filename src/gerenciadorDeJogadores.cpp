@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 #ifdef _WIN32
 #include <direct.h>
 #else
@@ -15,7 +16,7 @@
 using namespace std;
 
 /**
- * @details Tenta abrir o arquivo de dados na pasta especificada. Caso não exista, tenta criar a pasta e o arquivo. 
+ * @details Tenta abrir o arquivo de dados na pasta especificada. Caso nÃ£o exista, tenta criar a pasta e o arquivo. 
  */
 GerenciadorDeJogadores::GerenciadorDeJogadores(
   string caminhoPasta, 
@@ -31,7 +32,7 @@ GerenciadorDeJogadores::GerenciadorDeJogadores(
 
   if(!arquivoJogadores.is_open() || !arquivoPartidas.is_open()){
     #ifdef _WIN32
-    // Cria a pasta caso ela não exista
+    // Cria a pasta caso ela nÃ£o exista
     _mkdir(caminhoPasta.c_str());
     #else 
     mkdir(caminhoPasta.c_str(), 0755);
@@ -41,7 +42,7 @@ GerenciadorDeJogadores::GerenciadorDeJogadores(
       ofstream arquivoJogadoresCriado(caminhoArquivoJogadores);
 
       if(!arquivoJogadoresCriado.is_open()){
-        cout << "Nao foi possível criar o arquivo de dados de jogadores" << endl;
+        cout << "Nao foi possÃ­vel criar o arquivo de dados de jogadores" << endl;
         exit(-1);
       }
       arquivoJogadoresCriado.close();
@@ -119,9 +120,14 @@ bool GerenciadorDeJogadores::jogadorEhValido(string& apelido){
   return true;
 }
 
+bool compararJogadores(Jogador a, Jogador b){
+  return a.getNome() < b.getNome();
+}
+
 bool GerenciadorDeJogadores::adicionarJogador(string& nome, string& apelido){
   if(this->jogadorEhValido(apelido)){
     this->jogadores.push_back(Jogador(nome, apelido));
+    sort(jogadores.begin(), jogadores.end(), compararJogadores);
     return true;
   }
   else{
